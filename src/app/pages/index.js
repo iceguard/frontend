@@ -1,8 +1,8 @@
-import React from "react"
-import App from "../components/App"
+import React from 'react'
+import App from '../components/App'
 
 export default () => (
   <App>
-    <p>Index Page</p>
+    <p>Hello Next App</p>
   </App>
 )
