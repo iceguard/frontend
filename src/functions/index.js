@@ -1,25 +1,14 @@
-import { nextApp as next } from "./app/app"
-import { mars } from "./worlds/mars"
-import { jupiter } from "./worlds/jupiter"
+import * as functions from "firebase-functions"
+import next from "next"
 
-/*
-Namespace application services with function groups.
-Partially deploy namespaces for independent service updates.
-*/
+const dev = process.env.NODE_ENV !== "production"
+const app = next({ dev, conf: { distDir: "next" } })
+const handle = app.getRequestHandler()
 
-// SSR Next.js app Cloud Function used by Firebase Hosting
-// yarn deploy-app
-const app = {
-  next,
-  // other Hosting dependencies
-}
+export const nextApp = functions.https.onRequest((request, response) => {
+  console.log("File: " + request.originalUrl)
+  console.log("dev:", dev)
+  // log the page.js file or resource being requested
 
-// Mircoservices that make up the Greetings service
-// yarn deploy-functions
-const greetings = {
-  mars,
-  jupiter,
-  // other funcs
-}
-
-export { app, greetings }
+  return app.prepare().then(() => handle(request, response))
+})
