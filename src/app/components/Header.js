@@ -6,8 +6,8 @@ export default ({ pathname }) => (
     <Link href='/'>
       <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
     </Link>{' '}
-    <Link href='/about'>
-      <a className={pathname === '/about' ? 'is-active' : ''}>About</a>
+    <Link href='/login'>
+      <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
     </Link>
   </header>
 )

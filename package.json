@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "firebase": "^5.8.1",
     "firebase-admin": "^6.3.0",
     "firebase-functions": "^2.1.0",
     "next": "^7.0.2",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-firebaseui": "^3.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
