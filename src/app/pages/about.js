@@ -2,7 +2,7 @@ import React from 'react'
 import App from '../components/App'
 
 export default () => (
-  <App>
-    <p>About Page</p>
-  </App>
+    <App>
+        <p>About Page</p>
+    </App>
 )
