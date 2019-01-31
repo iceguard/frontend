@@ -7,7 +7,9 @@ export default class FirebaseAuth extends Component {
   constructor() {
     super()
 
-    this.state = { isSignedIn: false }
+    this.state = { 
+      isSignedIn: false 
+    }
 
     this.uiConfig = {
       signInFlow: 'popup',
@@ -31,28 +33,22 @@ export default class FirebaseAuth extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
-      console.log('user', user)
     })
   }
 
   render() {
+    const { isSignedIn } = this.state
+
     return (
       <div>
-        {this.state.isSignedIn ? (
-          <span>
+        {isSignedIn ? (
+          <>
             <div>Signed In!</div>
             <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img
-              alt='profile picture'
-              src={firebase.auth().currentUser.photoURL}
-            />
-          </span>
+            <h2>Welcome {firebase.auth().currentUser.displayName}</h2>
+          </>
         ) : (
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
+          <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
         )}
       </div>
     )
