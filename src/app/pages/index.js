@@ -8,5 +8,5 @@ export default class IndexPage extends Component {
                 <p>Hello Next App</p>
             </App>
         )
-    } 
+    }
 }

@@ -1,44 +1,46 @@
 {
-  "name": "firebase-functions-nextjs",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "firebase": "^5.8.1",
-    "firebase-admin": "^6.3.0",
-    "firebase-functions": "^2.1.0",
-    "next": "^7.0.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-firebaseui": "^3.1.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "@firebase/app-types": "^0.3.2",
-    "cpx": "^1.5.0",
-    "eslint": "^5.12.1",
-    "eslint-plugin-react": "^7.12.4",
-    "firebase-tools": "^6.3.0",
-    "prettier": "^1.16.1",
-    "rimraf": "^2.6.2"
-  },
-  "scripts": {
-    "fblogin": "yarn firebase login",
-    "dev": "next \"src/app\"",
-    "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn install-deps",
-    "serve": "NODE_ENV=production yarn firebase serve --only functions,hosting",
-    "deploy-app": "yarn firebase deploy --only hosting,functions:nextApp",
-    "deploy-functions": "yarn firebase deploy --only functions:greetings",
-    "deploy-all": "yarn firebase deploy",
-    "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
-    "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
-    "build-funcs": "babel \"src/functions\" --out-dir \"dist/functions\"",
-    "build-app": "NODE_ENV=production next build \"src/app\"",
-    "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
-    "install-deps": "cd \"dist/functions\" && yarn",
-    "lint": "node node_modules/eslint/bin/eslint.js src",
-    "lint:fix": "node node_modules/eslint/bin/eslint.js src --fix"
-  }
+    "name": "firebase-functions-nextjs",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "firebase": "^5.8.1",
+        "firebase-admin": "^6.3.0",
+        "firebase-functions": "^2.1.0",
+        "next": "^7.0.2",
+        "react": "^16.6.3",
+        "react-dom": "^16.6.3",
+        "react-firebaseui": "^3.1.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.2.0",
+        "@babel/core": "^7.2.0",
+        "@babel/preset-env": "^7.2.0",
+        "@firebase/app-types": "^0.3.2",
+        "cpx": "^1.5.0",
+        "eslint": "^5.12.1",
+        "eslint-config-prettier": "^4.0.0",
+        "eslint-plugin-prettier": "^3.0.1",
+        "eslint-plugin-react": "^7.12.4",
+        "firebase-tools": "^6.3.0",
+        "prettier": "^1.16.4",
+        "rimraf": "^2.6.2"
+    },
+    "scripts": {
+        "fblogin": "yarn firebase login",
+        "dev": "next \"src/app\"",
+        "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn install-deps",
+        "serve": "NODE_ENV=production yarn firebase serve --only functions,hosting",
+        "deploy-app": "yarn firebase deploy --only hosting,functions:nextApp",
+        "deploy-functions": "yarn firebase deploy --only functions:greetings",
+        "deploy-all": "yarn firebase deploy",
+        "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
+        "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
+        "build-funcs": "babel \"src/functions\" --out-dir \"dist/functions\"",
+        "build-app": "NODE_ENV=production next build \"src/app\"",
+        "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
+        "install-deps": "cd \"dist/functions\" && yarn",
+        "lint": "node node_modules/eslint/bin/eslint.js src",
+        "lint:fix": "node node_modules/eslint/bin/eslint.js src --fix"
+    }
 }

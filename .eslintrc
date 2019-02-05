@@ -1,6 +1,6 @@
 {
     "extends": ["eslint:recommended", "plugin:react/recommended"],
-    "plugins": ["react"],
+    "plugins": ["prettier", "react"],
     "parserOptions": {
         "ecmaVersion": 8,
         "sourceType": "module",
@@ -19,10 +19,10 @@
         }
     },
     "rules": {
+        "prettier/prettier": "error",
         "semi": ["error", "never"],
         "quotes": ["error", "single"],
         "eol-last": ["error", "always"],
-        "jsx-quotes": ["error", "prefer-single"],
         "react/display-name": 0,
         "react/jsx-key": 2,
         "react/jsx-no-comment-textnodes": 2,
