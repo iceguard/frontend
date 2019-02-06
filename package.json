@@ -4,6 +4,8 @@
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
+        "@babel/core": "^7.2.0",
+        "@babel/runtime": "^7.3.1",
         "firebase": "^5.8.1",
         "firebase-admin": "^6.3.0",
         "firebase-functions": "^2.1.0",
