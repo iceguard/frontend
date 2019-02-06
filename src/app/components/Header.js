@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import React, { PureComponent } from 'react'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import { connect } from 'react-redux'
 
-export default class Header extends PureComponent {
+class Header extends PureComponent {
     render() {
         const { pathname } = this.props
 
@@ -13,7 +16,16 @@ export default class Header extends PureComponent {
             <Link href='/login'>
               <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
             </Link>
+            <p>User: {this.props.user.displayName}</p>
+            <button onClick={() => firebase.auth().signOut()}>Logout</button>
           </header>
         )
     } 
 }
+
+
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(Header)

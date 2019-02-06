@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import App from '../components/App'
+import { connect } from 'react-redux'
 
-export default class IndexPage extends Component {
+class IndexPage extends Component {
     render() {
         return (
             <App>
-                <p>Hello Next App</p>
+                <p>Welcome Page</p>
             </App>
         )
     } 
 }
+
+const mapStateToProps = state => {
+    return {
+        displayName: state.user.displayName
+    }
+}
+
+export default connect(mapStateToProps)(IndexPage)
