@@ -20,9 +20,8 @@ class Header extends PureComponent {
             <button onClick={() => firebase.auth().signOut()}>Logout</button>
           </header>
         )
-    } 
+    }
 }
-
 
 const mapStateToProps = state => ({
   user: state.user

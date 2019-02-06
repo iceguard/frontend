@@ -50,7 +50,7 @@ class App extends Component {
                 {this.props.children}
             </main>
         )
-    } 
+    }
 }
 
 const mapDispatchToProps = dispatch => ({

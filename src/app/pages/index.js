@@ -9,7 +9,7 @@ class IndexPage extends Component {
                 <p>Welcome Page</p>
             </App>
         )
-    } 
+    }
 }
 
 const mapStateToProps = state => {

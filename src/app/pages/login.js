@@ -9,5 +9,5 @@ export default class LoginPage extends Component {
                 <SignIn/>
             </App>
         )
-    } 
+    }
 }
