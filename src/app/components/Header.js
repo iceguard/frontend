@@ -9,22 +9,22 @@ class Header extends PureComponent {
         const { pathname } = this.props
 
         return (
-          <header>
-            <Link href='/'>
-              <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
-            </Link>{' '}
-            <Link href='/login'>
-              <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
-            </Link>
-            <p>User: {this.props.user.displayName}</p>
-            <button onClick={() => firebase.auth().signOut()}>Logout</button>
-          </header>
+            <header>
+                <Link href="/">
+                    <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
+                </Link>{' '}
+                <Link href="/login">
+                    <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
+                </Link>
+                <p>User: {this.props.user.displayName}</p>
+                <button onClick={() => firebase.auth().signOut()}>Logout</button>
+            </header>
         )
     }
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+    user: state.user,
 })
 
 export default connect(mapStateToProps)(Header)

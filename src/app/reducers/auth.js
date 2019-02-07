@@ -8,15 +8,15 @@ const authState = {
         isAnonymous: null,
         phoneNumber: null,
         photoURL: null,
-        uid: null
-    }
+        uid: null,
+    },
 }
 
 export const auth = (state = authState, action) => {
     switch (action.type) {
         case actions.SET_USER:
             return Object.assign({}, state, {
-                user: {...action.user}
+                user: action.user,
             })
         default:
             return state

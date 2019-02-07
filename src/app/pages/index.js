@@ -14,7 +14,7 @@ class IndexPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        displayName: state.user.displayName
+        displayName: state.user.displayName,
     }
 }
 

@@ -6,7 +6,7 @@ export default class LoginPage extends Component {
     render() {
         return (
             <App>
-                <SignIn/>
+                <SignIn />
             </App>
         )
     }
