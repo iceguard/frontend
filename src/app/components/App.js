@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import Header from './Header'
-import { setUser } from '../actions'
+import { setUser } from '../store/actions'
 import { connect } from 'react-redux'
 
 class App extends Component {
