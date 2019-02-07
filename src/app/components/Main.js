@@ -5,7 +5,7 @@ import Header from './Header'
 import { setUser } from '../store/actions'
 import { connect } from 'react-redux'
 
-class App extends Component {
+class Main extends Component {
     constructor() {
         super()
 
@@ -50,4 +50,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     null,
     mapDispatchToProps
-)(App)
+)(Main)

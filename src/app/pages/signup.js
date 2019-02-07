@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import App from '../components/App'
+import Main from '../components/Main'
 import SignUp from '../components/SignUp'
 
 export default class SignUpPage extends Component {
     render() {
         return (
-            <App>
+            <Main>
                 <h1>Registrieren</h1>
                 <SignUp />
-            </App>
+            </Main>
         )
     }
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import App from '../components/App'
+import Main from '../components/Main'
 import { connect } from 'react-redux'
 
 class IndexPage extends Component {
     render() {
         return (
-            <App>
+            <Main>
                 <h1>Home</h1>
-            </App>
+            </Main>
         )
     }
 }
