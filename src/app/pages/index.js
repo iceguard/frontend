@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Main from '../components/Main'
+import Main from '@layout/Main'
 import { connect } from 'react-redux'
 
 class IndexPage extends Component {

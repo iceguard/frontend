@@ -3,10 +3,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import { connect } from 'react-redux'
 import Router from 'next/router'
-import Form from './Form'
-import FormInfoBar from './FormInfoBar'
-import FormInput from './FormInput'
-import FormSubmit from './FormSubmit'
+import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
 class Login extends Component {
     constructor() {

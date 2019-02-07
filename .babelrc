@@ -1,0 +1,13 @@
+{
+    "presets": ["next/babel"],
+    "plugins": [
+        ["module-resolver", {
+          "root": ["./src/app"],
+          "alias": {
+            "@core": "./src/app/components/@core",
+            "@layout": "./src/app/components/@layout",
+            "@auth": "./src/app/components/@auth",
+          }
+        }]
+      ]
+  }

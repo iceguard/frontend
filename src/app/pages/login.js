@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Main from '../components/Main'
-import Login from '../components/Login'
+import Main from '@layout/Main'
+import Login from '@auth/Login'
 
 export default class SignUpPage extends Component {
     render() {
