@@ -13,11 +13,18 @@ class Header extends PureComponent {
                 <Link href="/">
                     <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
                 </Link>{' '}
-                <Link href="/login">
-                    <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
-                </Link>
-                <p>User: {this.props.user.displayName}</p>
-                <button onClick={() => firebase.auth().signOut()}>Logout</button>
+                {!this.props.user.email ? (
+                    <Link href="/signup">
+                        <a className={pathname === '/signup' ? 'is-active' : ''}>Sign Up</a>
+                    </Link>
+                ) : null}
+                {this.props.user.email ? (
+                    <>
+                        <p>User: {this.props.user.email}</p>
+                        <button onClick={() => firebase.auth().signOut()}>Logout</button>
+                    </>
+                ) : null}
+                <hr />
             </header>
         )
     }
