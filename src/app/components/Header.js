@@ -10,19 +10,32 @@ class Header extends PureComponent {
 
         return (
             <header>
-                <Link href="/">
-                    <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
-                </Link>{' '}
-                {!this.props.user.email ? (
-                    <Link href="/signup">
-                        <a className={pathname === '/signup' ? 'is-active' : ''}>Sign Up</a>
-                    </Link>
-                ) : null}
+                <ul>
+                    <li>
+                        <Link href="/">
+                            <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
+                        </Link>
+                    </li>
+                    {!this.props.user.email ? (
+                        <>
+                            <li>
+                                <Link href="/login">
+                                    <a className={pathname === '/login' ? 'is-active' : ''}>Anmelden</a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/signup">
+                                    <a className={pathname === '/signup' ? 'is-active' : ''}>Registieren</a>
+                                </Link>
+                            </li>
+                        </>
+                    ) : null}
+                </ul>
                 {this.props.user.email ? (
-                    <>
+                    <div>
                         <p>User: {this.props.user.email}</p>
-                        <button onClick={() => firebase.auth().signOut()}>Logout</button>
-                    </>
+                        <button onClick={() => firebase.auth().signOut()}>Abmelden</button>
+                    </div>
                 ) : null}
                 <hr />
             </header>

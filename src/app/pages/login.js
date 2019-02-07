@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import App from '../components/App'
-import SignUp from '../components/SignUp'
+import Login from '../components/Login'
 
 export default class SignUpPage extends Component {
     render() {
         return (
             <App>
-                <h1>Registrieren</h1>
-                <SignUp />
+                <h1>Anmelden</h1>
+                <Login />
             </App>
         )
     }
