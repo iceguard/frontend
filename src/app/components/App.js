@@ -18,28 +18,18 @@ class App extends Component {
     }
 
     componentDidMount() {
+        const { onAuthChange } = this.props
+
         firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.props.onAuthChange({
-                    displayName: user.displayName,
-                    email: user.email,
-                    emailVerified: user.emailVerified,
-                    isAnonymous: user.isAnonymous,
-                    phoneNumber: user.phoneNumber,
-                    photoURL: user.photoURL,
-                    uid: user.uid,
-                })
-            } else {
-                this.props.onAuthChange({
-                    displayName: null,
-                    email: null,
-                    emailVerified: null,
-                    isAnonymous: null,
-                    phoneNumber: null,
-                    photoURL: null,
-                    uid: null,
-                })
-            }
+            onAuthChange({
+                displayName: user ? user.displayName : null,
+                email: user ? user.email : null,
+                emailVerified: user ? user.emailVerified : null,
+                isAnonymous: user ? user.isAnonymous : null,
+                phoneNumber: user ? user.phoneNumber : null,
+                photoURL: user ? user.photoURL : null,
+                uid: user ? user.uid : null,
+            })
         })
     }
 
