@@ -1,21 +1,13 @@
 import React, { Component } from 'react'
 import Main from '@layout/Main'
-import { connect } from 'react-redux'
+import WithUser from '@misc/WithUser'
 
-class IndexPage extends Component {
+export default class IndexPage extends Component {
     render() {
         return (
             <Main>
-                <h1>Home</h1>
+                <WithUser>{user => <p>Hello {user.email}</p>}</WithUser>
             </Main>
         )
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        displayName: state.user.displayName,
-    }
-}
-
-export default connect(mapStateToProps)(IndexPage)
