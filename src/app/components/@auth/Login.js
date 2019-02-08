@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { connect } from 'react-redux'
 import Router from 'next/router'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 

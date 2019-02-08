@@ -6,7 +6,7 @@ export default class SignUpPage extends Component {
     render() {
         return (
             <Main>
-                <h1>Anmelden</h1>
+                <h1>Einloggen</h1>
                 <Login />
             </Main>
         )
