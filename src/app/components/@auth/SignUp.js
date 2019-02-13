@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { connect } from 'react-redux'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
-class SignUp extends Component {
+export default class SignUp extends Component {
     constructor() {
         super()
 
@@ -125,7 +124,7 @@ class SignUp extends Component {
         return signUpSuccess ? (
             <p>Sie haben sich erfolgreich registriert. Willkommen!</p>
         ) : (
-            <Fragment>
+            <>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
@@ -158,11 +157,9 @@ class SignUp extends Component {
                         onChange={this.updateInputValue}
                         hasError={form.passwordRepeat.hasError}
                     />
-                    <FormSubmit value="Registieren" />
+                    <FormSubmit value="Jetzt registieren" />
                 </Form>
-            </Fragment>
+            </>
         )
     }
 }
-
-export default SignUp

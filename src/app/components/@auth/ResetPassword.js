@@ -1,29 +1,20 @@
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import Router from 'next/router'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
-export default class Login extends Component {
+export default class ResetPassword extends Component {
     constructor() {
         super()
 
         this.state = {
+            passwordResetLinkSent: false,
             form: {
                 infoMessage: '',
                 email: {
                     label: 'E-Mail',
                     name: 'email',
                     type: 'email',
-                    value: '',
-                    required: true,
-                    errorMessage: '',
-                    hasError: false,
-                },
-                password: {
-                    label: 'Passwort',
-                    name: 'password',
-                    type: 'password',
                     value: '',
                     required: true,
                     errorMessage: '',
@@ -56,35 +47,27 @@ export default class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const form = { ...this.state.form }
-
-        form.email.hasError = false
-        form.email.errorMessage = ''
-        form.password.hasError = false
-        form.password.errorMessage = ''
-
-        this.updateFormState(form)
+        const emailValue = this.state.form.email.value
 
         firebase
             .auth()
-            .signInWithEmailAndPassword(form.email.value, form.password.value)
+            .sendPasswordResetEmail(emailValue)
             .then(() => {
-                Router.push('/')
+                this.setState({
+                    passwordResetLinkSent: true,
+                })
             })
             .catch(error => {
                 const errorCode = error.code
+                const form = { ...this.state.form }
 
                 if (errorCode === 'auth/invalid-email') {
                     form.email.hasError = true
                     form.email.errorMessage = 'E-Mail Adresse ist ungültig'
-                } else if (errorCode === 'auth/user-disabled') {
-                    form.infoMessage = 'User wurde deaktiviert'
                 } else if (errorCode === 'auth/user-not-found') {
-                    form.email.hasError = true
-                    form.email.errorMessage = 'Kein gültiger User für diese E-Mail Adresse'
-                } else if (errorCode === 'auth/wrong-password') {
-                    form.password.hasError = true
-                    form.password.errorMessage = 'Passwort ist ungültig'
+                    form.infoMessage = 'Kein User für diese E-Mail Adresse vorhanden'
+                } else {
+                    form.email.errorMessage = error.code.infoMessage
                 }
 
                 this.updateFormState(form)
@@ -92,7 +75,15 @@ export default class Login extends Component {
     }
 
     render() {
-        const form = this.state.form
+        const { form, passwordResetLinkSent } = this.state
+
+        if (passwordResetLinkSent) {
+            return (
+                <p>
+                    Wir haben Ihnen ein E-Mai an <strong>{form.email.value}</strong> gesendet.
+                </p>
+            )
+        }
 
         return (
             <>
@@ -108,17 +99,7 @@ export default class Login extends Component {
                         onChange={this.updateInputValue}
                         hasError={form.email.hasError}
                     />
-                    <FormInput
-                        label={form.password.label}
-                        name={form.password.name}
-                        type={form.password.type}
-                        required={form.password.required}
-                        intitialValue={form.password.value}
-                        errorMessage={form.password.errorMessage}
-                        onChange={this.updateInputValue}
-                        hasError={form.password.hasError}
-                    />
-                    <FormSubmit value="Anmelden" />
+                    <FormSubmit value="Passwort zurücksetzen" />
                 </Form>
             </>
         )

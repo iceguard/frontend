@@ -31,6 +31,11 @@ export default class Header extends PureComponent {
                                                 <a className={pathname === '/signup' ? 'is-active' : ''}>Registieren</a>
                                             </Link>
                                         </li>
+                                        <li>
+                                            <Link href="/resetpassword">
+                                                <a className={pathname === '/resetpassword' ? 'is-active' : ''}>Passwort zurücksetzen</a>
+                                            </Link>
+                                        </li>
                                     </>
                                 ) : null}
                             </ul>
