@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import WithRouter from '@misc/WithRouter'
+import ChangePassword from '@auth/ChangePassword'
 
 export default class Auth extends Component {
     constructor() {
         super()
-
-        this.renderChangePassword = this.renderChangePassword.bind(this)
     }
 
     render() {
@@ -15,27 +12,23 @@ export default class Auth extends Component {
             <WithRouter>
                 {router => {
                     const { mode, oobCode } = router.query
+                    let authView = null
 
-                    if (mode === 'resetPassword' && oobCode) {
-                        firebase
-                            .auth()
-                            .checkActionCode(oobCode)
-                            .then(() => {
-                                console.log(this)
-                                this.renderChangePassword()
-                            })
-                            .catch(error => {
-                                console.log('not ok')
-                                console.log(error)
-                            })
+                    if (!mode || !oobCode) {
+                        return null
                     }
+
+                    switch (mode) {
+                        case 'resetPassword':
+                            authView = <ChangePassword mode={mode} oobCode={oobCode} />
+                            break
+                        default:
+                            break
+                    }
+
+                    return authView
                 }}
             </WithRouter>
         )
-    }
-
-    renderChangePassword() {
-        console.log('sdf')
-        return <p>Change password ...</p>
     }
 }
