@@ -80,7 +80,7 @@ export default class ResetPassword extends Component {
         if (passwordResetLinkSent) {
             return (
                 <p>
-                    Wir haben Ihnen ein E-Mai an <strong>{form.email.value}</strong> gesendet.
+                    Wir haben Ihnen ein E-Mail an <strong>{form.email.value}</strong> gesendet.
                 </p>
             )
         }
