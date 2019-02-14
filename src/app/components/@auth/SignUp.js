@@ -52,15 +52,10 @@ export default class SignUp extends Component {
     }
 
     updateInputValue = event => {
-        this.setState({
-            form: {
-                ...this.state.form,
-                [event.target.name]: {
-                    ...this.state.form[event.target.name],
-                    value: event.target.value,
-                },
-            },
-        })
+        const form = { ...this.state.form }
+
+        form[event.target.name].value = event.target.value
+        this.updateFormState(form)
     }
 
     passwordValuesDoMatch = () => {
@@ -111,6 +106,8 @@ export default class SignUp extends Component {
                     form.passwordRepeat.errorMessage = 'Schwaches Passwort'
                 } else if (errorCode === 'auth/operation-not-allowed') {
                     form.infoMessage = 'Diese Operation ist nicht erlaubt'
+                } else {
+                    form.infoMessage = errorCode.infoMessage
                 }
 
                 this.updateFormState(form)
@@ -125,6 +122,7 @@ export default class SignUp extends Component {
             <p>Sie haben sich erfolgreich registriert. Willkommen!</p>
         ) : (
             <>
+                <h2>Registieren</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput

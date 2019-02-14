@@ -6,7 +6,6 @@ export default class ResetPasswordPage extends Component {
     render() {
         return (
             <Main>
-                <h1>Passwort zurücksetzen</h1>
                 <ResetPassword />
             </Main>
         )

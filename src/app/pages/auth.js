@@ -6,7 +6,6 @@ export default class AuthPage extends Component {
     render() {
         return (
             <Main>
-                <h1>Auth</h1>
                 <Auth />
             </Main>
         )

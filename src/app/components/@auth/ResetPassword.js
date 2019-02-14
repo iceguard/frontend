@@ -34,15 +34,10 @@ export default class ResetPassword extends Component {
     }
 
     updateInputValue = event => {
-        this.setState({
-            form: {
-                ...this.state.form,
-                [event.target.name]: {
-                    ...this.state.form[event.target.name],
-                    value: event.target.value,
-                },
-            },
-        })
+        const form = { ...this.state.form }
+
+        form[event.target.name].value = event.target.value
+        this.updateFormState(form)
     }
 
     handleSubmit = event => {
@@ -67,7 +62,7 @@ export default class ResetPassword extends Component {
                 } else if (errorCode === 'auth/user-not-found') {
                     form.infoMessage = 'Kein User für diese E-Mail Adresse vorhanden'
                 } else {
-                    form.email.errorMessage = error.code.infoMessage
+                    form.email.errorMessage = errorCode.infoMessage
                 }
 
                 this.updateFormState(form)
@@ -87,6 +82,7 @@ export default class ResetPassword extends Component {
 
         return (
             <>
+                <h2>Passwort zurücksetzen</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput

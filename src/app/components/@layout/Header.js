@@ -23,7 +23,7 @@ export default class Header extends PureComponent {
                                     <>
                                         <li>
                                             <Link href="/login">
-                                                <a className={pathname === '/login' ? 'is-active' : ''}>Einloggen</a>
+                                                <a className={pathname === '/login' ? 'is-active' : ''}>Anmelden</a>
                                             </Link>
                                         </li>
                                         <li>

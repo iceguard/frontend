@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import Router from 'next/router'
+import Link from 'next/link'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
 export default class Login extends Component {
@@ -43,15 +44,10 @@ export default class Login extends Component {
     }
 
     updateInputValue = event => {
-        this.setState({
-            form: {
-                ...this.state.form,
-                [event.target.name]: {
-                    ...this.state.form[event.target.name],
-                    value: event.target.value,
-                },
-            },
-        })
+        const form = { ...this.state.form }
+
+        form[event.target.name].value = event.target.value
+        this.updateFormState(form)
     }
 
     handleSubmit = event => {
@@ -85,6 +81,8 @@ export default class Login extends Component {
                 } else if (errorCode === 'auth/wrong-password') {
                     form.password.hasError = true
                     form.password.errorMessage = 'Passwort ist ungültig'
+                } else {
+                    form.infoMessage = errorCode.infoMessage
                 }
 
                 this.updateFormState(form)
@@ -96,6 +94,7 @@ export default class Login extends Component {
 
         return (
             <>
+                <h2>Anmelden</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
@@ -120,6 +119,9 @@ export default class Login extends Component {
                     />
                     <FormSubmit value="Anmelden" />
                 </Form>
+                <Link href="/resetpassword">
+                    <a>Passwort vergessen?</a>
+                </Link>
             </>
         )
     }

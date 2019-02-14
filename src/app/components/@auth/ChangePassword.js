@@ -6,7 +6,6 @@ import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 export default class ChangePassword extends Component {
     constructor() {
         super()
-        const { oobCode } = this.props
 
         this.state = {
             changePasswordSuccess: false,
@@ -15,7 +14,7 @@ export default class ChangePassword extends Component {
                 infoMessage: '',
                 newPassword: {
                     label: 'Neues Passwort',
-                    name: 'password',
+                    name: 'newPassword',
                     type: 'password',
                     value: '',
                     required: true,
@@ -24,7 +23,7 @@ export default class ChangePassword extends Component {
                 },
                 newPasswordRepeat: {
                     label: 'Neues Passwort wiederholen',
-                    name: 'passwordRepeat',
+                    name: 'newPasswordRepeat',
                     type: 'password',
                     value: '',
                     required: true,
@@ -33,6 +32,10 @@ export default class ChangePassword extends Component {
                 },
             },
         }
+    }
+
+    componentDidMount() {
+        const { oobCode } = this.props
 
         firebase
             .auth()
@@ -59,19 +62,15 @@ export default class ChangePassword extends Component {
     }
 
     updateInputValue = event => {
-        this.setState({
-            form: {
-                ...this.state.form,
-                [event.target.name]: {
-                    ...this.state.form[event.target.name],
-                    value: event.target.value,
-                },
-            },
-        })
+        const form = { ...this.state.form }
+
+        form[event.target.name].value = event.target.value
+        this.updateFormState(form)
     }
 
     handleSubmit = event => {
         event.preventDefault()
+        const { oobCode } = this.props
         const newPassword = this.state.form.newPassword.value
         const newPasswordRepeat = this.state.form.newPasswordRepeat.value
 
@@ -85,7 +84,7 @@ export default class ChangePassword extends Component {
 
         firebase
             .auth()
-            .ChangePassword(newPassword)
+            .confirmPasswordReset(oobCode, newPassword)
             .then(() => {
                 this.setState({
                     changePasswordSuccess: true,
@@ -95,11 +94,16 @@ export default class ChangePassword extends Component {
                 const errorCode = error.code
                 const form = { ...this.state.form }
 
-                if (errorCode === 'auth/invalid-email') {
-                    form.email.hasError = true
-                    form.email.errorMessage = 'E-Mail Adresse ist ungültig'
-                } else if (errorCode === 'auth/user-not-found') {
-                    form.infoMessage = 'Kein User für diese E-Mail Adresse vorhanden'
+                if (errorCode === 'aauth/expired-action-code') {
+                    form.infoMessage = 'Action Code ist abgelaufen'
+                } else if (errorCode === 'auth/invalid-action-code') {
+                    form.infoMessage = 'Action Code ist ungültig'
+                } else if (errorCode == 'auth/user-disabled') {
+                    form.infoMessage = 'User wurde deaktiviert'
+                } else if (errorCode == 'auth/user-not-found') {
+                    form.infoMessage = 'User wurde nicht gefunden'
+                } else if (errorCode == 'auth/weak-password') {
+                    form.infoMessage = 'Schwaches Passwort'
                 } else {
                     form.infoMessage = errorCode
                 }
@@ -117,6 +121,7 @@ export default class ChangePassword extends Component {
 
         return (
             <>
+                <h2>Passwort ändern</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
