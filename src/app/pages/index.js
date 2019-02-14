@@ -5,7 +5,7 @@ export default class IndexPage extends Component {
     render() {
         return (
             <Main>
-                <h2>Home</h2>
+                <h2>Hello Next-Firebase</h2>
             </Main>
         )
     }
