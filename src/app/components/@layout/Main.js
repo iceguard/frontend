@@ -4,7 +4,6 @@ import 'firebase/auth'
 import Header from '@layout/Header'
 import { setUser } from '../../store/actions'
 import { connect } from 'react-redux'
-import Router from 'next/router'
 
 class Main extends Component {
     constructor() {
