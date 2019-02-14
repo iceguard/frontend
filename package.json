@@ -29,6 +29,7 @@
         "eslint-plugin-prettier": "^3.0.1",
         "eslint-plugin-react": "^7.12.4",
         "firebase-tools": "^6.3.0",
+        "pre-push": "^0.1.1",
         "prettier": "^1.16.1",
         "rimraf": "^2.6.2"
     },
@@ -48,5 +49,8 @@
         "install-deps": "cd \"dist/functions\" && yarn",
         "lint": "node node_modules/eslint/bin/eslint.js .",
         "lint:fix": "node node_modules/eslint/bin/eslint.js . --fix"
-    }
+    },
+    "pre-push": [
+        "lint"
+    ]
 }

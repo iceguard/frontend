@@ -5,7 +5,7 @@ export default class IndexPage extends Component {
     render() {
         return (
             <Main>
-                <h1>Home</h1>
+                <h2>Home</h2>
             </Main>
         )
     }
