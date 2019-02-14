@@ -6,4 +6,5 @@ pipelines:
               caches:
                   - node
               script:
-                  - yarn deploy-app
+                  - yarn
+                  - yarn firebase deploy --token $FIREBASE_TOKEN
