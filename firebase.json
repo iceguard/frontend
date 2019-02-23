@@ -1,17 +1,16 @@
 {
-  "hosting": {
-    "public": "dist/public",
-    "rewrites": [
-      {
-        "source": "**/**",
-        "function": "nextApp"
-      }
-    ],
-    "predeploy": "yarn build-public"
-  },
-  "functions": {
-    "source": "dist/functions",
-    "predeploy":
-      "yarn build-funcs && yarn build-app && yarn copy-deps"
-  }
+    "hosting": {
+        "public": "dist/public",
+        "rewrites": [
+            {
+                "source": "**/**",
+                "function": "nextApp"
+            }
+        ],
+        "predeploy": "yarn build-public"
+    },
+    "functions": {
+        "source": "dist/functions",
+        "predeploy": "yarn build-funcs && yarn build-app && yarn copy-deps"
+    }
 }

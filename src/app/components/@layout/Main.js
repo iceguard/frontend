@@ -11,8 +11,12 @@ class Main extends Component {
 
         if (!firebase.apps.length) {
             firebase.initializeApp({
-                apiKey: 'AIzaSyD-Y1Ow8LDAGEWLsihFP1Df9WeGLKV8FEc',
-                authDomain: 'next-229711.firebaseapp.com',
+                apiKey: 'AIzaSyBNYyxvZ3Ccg8yonKZPCxboOMu32YvtvoA',
+                authDomain: 'ice-guard.firebaseapp.com',
+                databaseURL: 'https://ice-guard.firebaseio.com',
+                projectId: 'ice-guard',
+                storageBucket: 'ice-guard.appspot.com',
+                messagingSenderId: '896872120637',
             })
         }
     }

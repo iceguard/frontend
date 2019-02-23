@@ -82,7 +82,7 @@ export default class ResetPassword extends Component {
 
         return (
             <>
-                <h2>Passwort zurücksetzen</h2>
+                <h2>Reset password</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
@@ -95,7 +95,7 @@ export default class ResetPassword extends Component {
                         onChange={this.updateInputValue}
                         hasError={form.email.hasError}
                     />
-                    <FormSubmit value="Passwort zurücksetzen" />
+                    <FormSubmit value="Reset password" />
                 </Form>
             </>
         )

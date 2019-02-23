@@ -21,7 +21,7 @@ export default class SignUp extends Component {
                     hasError: false,
                 },
                 password: {
-                    label: 'Passwort',
+                    label: 'Password',
                     name: 'password',
                     type: 'password',
                     value: '',
@@ -30,7 +30,7 @@ export default class SignUp extends Component {
                     hasError: false,
                 },
                 passwordRepeat: {
-                    label: 'Passwort wiederholen',
+                    label: 'Repeat password',
                     name: 'passwordRepeat',
                     type: 'password',
                     value: '',
@@ -119,10 +119,10 @@ export default class SignUp extends Component {
         const { signUpSuccess } = this.state
 
         return signUpSuccess ? (
-            <p>Sie haben sich erfolgreich registriert. Willkommen!</p>
+            <p>Registration successful</p>
         ) : (
             <>
-                <h2>Registieren</h2>
+                <h2>Sign Up</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
@@ -155,7 +155,7 @@ export default class SignUp extends Component {
                         onChange={this.updateInputValue}
                         hasError={form.passwordRepeat.hasError}
                     />
-                    <FormSubmit value="Jetzt registieren" />
+                    <FormSubmit value="Sign Up" />
                 </Form>
             </>
         )

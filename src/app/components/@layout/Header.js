@@ -13,6 +13,7 @@ export default class Header extends PureComponent {
                 {user => {
                     return (
                         <header>
+                            <h1>Ice Guard Surveillance System</h1>
                             <ul>
                                 <li>
                                     <Link href="/">
@@ -23,26 +24,26 @@ export default class Header extends PureComponent {
                                     <>
                                         <li>
                                             <Link href="/login">
-                                                <a className={pathname === '/login' ? 'is-active' : ''}>Anmelden</a>
+                                                <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/signup">
-                                                <a className={pathname === '/signup' ? 'is-active' : ''}>Registieren</a>
+                                                <a className={pathname === '/signup' ? 'is-active' : ''}>Sign Up</a>
                                             </Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link href="/resetpassword">
-                                                <a className={pathname === '/resetpassword' ? 'is-active' : ''}>Passwort zurücksetzen</a>
+                                                <a className={pathname === '/resetpassword' ? 'is-active' : ''}>Reset password</a>
                                             </Link>
-                                        </li>
+                                        </li> */}
                                     </>
                                 ) : null}
                             </ul>
                             {user.email ? (
                                 <div>
-                                    <p>User: {user.email}</p>
-                                    <button onClick={() => firebase.auth().signOut()}>Abmelden</button>
+                                    <p>Curent user: {user.email}</p>
+                                    <button onClick={() => firebase.auth().signOut()}>Logout</button>
                                 </div>
                             ) : null}
                             <hr />

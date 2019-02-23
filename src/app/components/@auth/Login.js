@@ -22,7 +22,7 @@ export default class Login extends Component {
                     hasError: false,
                 },
                 password: {
-                    label: 'Passwort',
+                    label: 'Password',
                     name: 'password',
                     type: 'password',
                     value: '',
@@ -94,7 +94,7 @@ export default class Login extends Component {
 
         return (
             <>
-                <h2>Anmelden</h2>
+                <h2>Login</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
@@ -117,10 +117,10 @@ export default class Login extends Component {
                         onChange={this.updateInputValue}
                         hasError={form.password.hasError}
                     />
-                    <FormSubmit value="Anmelden" />
+                    <FormSubmit value="Login" />
                 </Form>
                 <Link href="/resetpassword">
-                    <a>Passwort vergessen?</a>
+                    <a>Forgot password?</a>
                 </Link>
             </>
         )
