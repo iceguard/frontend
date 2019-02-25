@@ -1,3 +1,6 @@
+variables:
+    - group: my-variable-group
+
 trigger:
     - master
 
