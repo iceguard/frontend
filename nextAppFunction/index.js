@@ -5,7 +5,9 @@ const app = next({ dev, conf: { distDir: 'next' } })
 const handle = app.getRequestHandler()
 
 module.exports = async function(context, req) {
-    return app.prepare().then(() => handle(req, context.response))
+    return app.prepare().then(function() {
+        return handle(req, context.response)
+    })
 
     // context.log('JavaScript HTTP trigger function processed a request.')
 
