@@ -4,10 +4,11 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev, conf: { distDir: 'next' } })
 const handle = app.getRequestHandler()
 
-module.exports = async function(context, req) {
-    context.res = app.prepare().then(function() {
-        return handle(req, context.res)
-    })
+module.exports = function(context, req) {
+    return 'hello world!'
+    // return app.prepare().then(function() {
+    //     return handle(req, context.res)
+    // })
 
     // context.log('JavaScript HTTP trigger function processed a request.')
 
