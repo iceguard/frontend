@@ -1,52 +1,3 @@
-### Project specific
-dist/
-.firebase/
-
-# Created by https://www.gitignore.io/api/web,node,linux,macos,windows
-
-### Linux ###
-*~
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
-
-### macOS ###
-*.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-### Node ###
 # Logs
 logs
 *.log
@@ -69,7 +20,7 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -78,14 +29,14 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
+# Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
 
-# Typescript v1 declaration files
+# TypeScript v1 declaration files
 typings/
 
 # Optional npm cache directory
@@ -105,26 +56,35 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.test
 
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
+# parcel-bundler cache (https://parceljs.org/)
+.cache
 
-# Folder config file
-Desktop.ini
+# next.js build output
+.next
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# nuxt.js build output
+.nuxt
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# vuepress build output
+.vuepress/dist
 
-# Windows shortcuts
-*.lnk
+# Serverless directories
+.serverless/
 
-# End of https://www.gitignore.io/api/web,node,linux,macos,windows
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# Azure Functions artifacts
+bin
+obj
+appsettings.json
+local.settings.json
+
+# TypeScript output
+dist
+out
