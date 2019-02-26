@@ -22,5 +22,5 @@ steps:
           yarn -v
           yarn
           yarn build-app
-          yarn firebase deploy --token $FIREBASE_TOKEN
+          # yarn firebase deploy --token $FIREBASE_TOKEN
       displayName: 'Install and deploy'
