@@ -21,5 +21,6 @@ steps:
           node -v
           yarn -v
           yarn
+          yarn build-app
           yarn firebase deploy --token $FIREBASE_TOKEN
       displayName: 'Install and deploy'
