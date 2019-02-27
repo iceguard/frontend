@@ -1,6 +1,6 @@
 const next = require('next')
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = false
 const app = next({ dev, conf: { distDir: 'nextAppFunction/__next' } })
 const handle = app.getRequestHandler()
 
