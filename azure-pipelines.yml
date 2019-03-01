@@ -10,17 +10,24 @@ pool:
 steps:
     - task: NodeTool@0
       inputs:
-          versionSpec: '8.x'
+        versionSpec: '8.x'
       displayName: 'Install Node.js'
     - script: |
-          curl -o- -L https://yarnpkg.com/install.sh | bash
-      displayName: 'Install Yarn'
+            curl -o- -L https://yarnpkg.com/install.sh | bash
+        displayName: 'Install Yarn'
     - script: |
-          set -e
-          export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-          node -v
-          yarn -v
-          yarn
-          yarn build-app
-          # yarn firebase deploy --token $FIREBASE_TOKEN
-      displayName: 'Install and deploy'
+            set -e
+            export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+        displayName: 'Export paths'
+    - script: |
+            node -v
+            yarn -v
+        displayName: 'Log Node & Yarn version'
+    - script: |
+            yarn
+        displayName: 'Intall packages'
+    - script: |
+            yarn firebase deploy --token $FIREBASE_TOKEN
+        displayName: 'Deploy to Firebase 🔥'    
+
+        
