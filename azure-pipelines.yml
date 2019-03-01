@@ -36,10 +36,12 @@ steps:
       displayName: 'Lint JavaScript'
 
     - task: CopyFiles@2
-      displayName: 'Copy Files to: Artifact staging'
+      displayName: 'Copy Files'
       inputs:
           SourceFolder: $(System.DefaultWorkingDirectory)
-          Contents: '**/*'
+          Contents: |
+              '**/*'
+              'node_modules\**\*'
           TargetFolder: $(Build.ArtifactStagingDirectory)
 
     - task: PublishBuildArtifacts@1
