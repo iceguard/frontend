@@ -1,3 +1,4 @@
-module.exports = {
-    distDir: '../../nextAppFunction/__next',
-}
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({
+    cssModules: true,
+})
