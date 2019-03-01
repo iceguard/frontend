@@ -41,3 +41,8 @@ steps:
           SourceFolder: $(System.DefaultWorkingDirectory)
           Contents: '*'
           TargetFolder: $(Build.ArtifactStagingDirectory)
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'iceguard-frontend'
