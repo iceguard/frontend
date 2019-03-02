@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "ice-guard"
+    "production": "ice-guard-prod"
   }
 }

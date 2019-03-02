@@ -11,12 +11,12 @@ class Main extends Component {
 
         if (!firebase.apps.length) {
             firebase.initializeApp({
-                apiKey: 'AIzaSyBNYyxvZ3Ccg8yonKZPCxboOMu32YvtvoA',
-                authDomain: 'ice-guard.firebaseapp.com',
-                databaseURL: 'https://ice-guard.firebaseio.com',
-                projectId: 'ice-guard',
-                storageBucket: 'ice-guard.appspot.com',
-                messagingSenderId: '896872120637',
+                apiKey: 'AIzaSyDiDcpdC2LC2ogVF9m5UTq5xXXNgZ8J3Us',
+                authDomain: 'ice-guard-prod.firebaseapp.com',
+                databaseURL: 'https://ice-guard-prod.firebaseio.com',
+                projectId: 'ice-guard-prod',
+                storageBucket: 'ice-guard-prod.appspot.com',
+                messagingSenderId: '646781153721',
             })
         }
     }
