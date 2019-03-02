@@ -36,9 +36,21 @@ steps:
       displayName: 'Lint JavaScript'
 
     - script: |
-          yarn clean
           yarn build-public
           yarn build-funcs
           yarn build-app
           yarn copy-deps
+          yarn clean
       displayName: 'Build Tests'
+
+    - task: DeleteFiles@2
+      displayName: 'Delete node_modules'
+      inputs:
+          sourceFolder: 'node_modules'
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: Artifact staging'
+      inputs:
+          SourceFolder: $(System.DefaultWorkingDirectory)
+          Contents: '**/*'
+          TargetFolder: $(Build.ArtifactStagingDirectory)
