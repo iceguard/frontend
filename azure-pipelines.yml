@@ -46,7 +46,7 @@ steps:
     - task: DeleteFiles@1
       displayName: 'Delete node_modules'
       inputs:
-          Contents: 'node_modules'
+          Contents: '**\node_modules\**'
 
     - task: CopyFiles@2
       displayName: 'Copy Files to: Artifact staging'
