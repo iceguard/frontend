@@ -29,22 +29,15 @@ steps:
 
     - script: |
           yarn
-      displayName: 'Intall packages'
+      displayName: 'Install packages'
 
     - script: |
           yarn lint
       displayName: 'Lint JavaScript'
 
-    - task: CopyFiles@2
-      displayName: 'Copy Files'
-      inputs:
-          SourceFolder: $(System.DefaultWorkingDirectory)
-          Contents: |
-              '*'
-              'src/**'
-          TargetFolder: $(Build.ArtifactStagingDirectory)
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: 'iceguard-frontend'
+    - script: |
+          yarn build-public
+          yarn build-funcs
+          yarn build-app
+          yarn copy-deps
+      displayName: 'Build Artifacts'
