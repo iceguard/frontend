@@ -1,5 +1,6 @@
 {
   "projects": {
-    "production": "ice-guard-prod"
+    "prod": "ice-guard-prod",
+    "test": "ice-guard-test"
   }
 }

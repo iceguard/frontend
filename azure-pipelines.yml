@@ -36,5 +36,5 @@ steps:
       displayName: 'Lint JavaScript'
 
     - script: |
-          yarn deploy-all
+          yarn deploy-test
       displayName: 'Deploy to Firebase 🔥'

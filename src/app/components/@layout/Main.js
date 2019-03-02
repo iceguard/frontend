@@ -5,18 +5,20 @@ import Header from '@layout/Header'
 import { setUser } from '../../store/actions'
 import { connect } from 'react-redux'
 
+const prod = process.env.NODE_ENV == 'prod'
+
 class Main extends Component {
     constructor() {
         super()
 
         if (!firebase.apps.length) {
             firebase.initializeApp({
-                apiKey: 'AIzaSyDiDcpdC2LC2ogVF9m5UTq5xXXNgZ8J3Us',
-                authDomain: 'ice-guard-prod.firebaseapp.com',
-                databaseURL: 'https://ice-guard-prod.firebaseio.com',
-                projectId: 'ice-guard-prod',
-                storageBucket: 'ice-guard-prod.appspot.com',
-                messagingSenderId: '646781153721',
+                apiKey: prod ? 'AIzaSyDiDcpdC2LC2ogVF9m5UTq5xXXNgZ8J3Us' : 'AIzaSyDS9cPHMt9L_d5QyQ2Moztp8PFUfu9R8PM',
+                authDomain: prod ? 'ice-guard-prod.firebaseapp.com' : 'ice-guard-test.firebaseapp.com',
+                databaseURL: prod ? 'https://ice-guard-prod.firebaseio.com' : 'https://ice-guard-test.firebaseio.com',
+                projectId: prod ? 'ice-guard-prod' : 'ice-guard-test',
+                storageBucket: prod ? 'ice-guard-prod.appspot.com' : 'ice-guard-test.appspot.com',
+                messagingSenderId: prod ? '646781153721' : '29822743006',
             })
         }
     }
