@@ -51,7 +51,7 @@ steps:
     - task: CopyFiles@2
       displayName: 'Copy Files to: Artifact staging'
       inputs:
-          SourceFolder: $(System.DefaultWorkingDirectory)
+          SourceFolder: $(System.WorkFolder)
           Contents: '*'
           TargetFolder: $(Build.ArtifactStagingDirectory)
 
