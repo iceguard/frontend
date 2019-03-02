@@ -36,26 +36,5 @@ steps:
       displayName: 'Lint JavaScript'
 
     - script: |
-          yarn build-public
-          yarn build-funcs
-          yarn build-app
-          yarn copy-deps
-          yarn clean
-      displayName: 'Build Tests'
-
-    - task: DeleteFiles@1
-      displayName: 'Delete node_modules'
-      inputs:
-          Contents: '**\node_modules\**'
-
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: Artifact staging'
-      inputs:
-          Contents: '**/*'
-          TargetFolder: $(Build.ArtifactStagingDirectory)
-
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifacts'
-      inputs:
-          SourceFolder: $(Build.ArtifactStagingDirectory)
-          artifactName: 'ice-guard-frontend'
+          yarn firebase deploy --token $FIREBASE_TOKEN
+      displayName: 'Deploy to Firebase 🔥'
