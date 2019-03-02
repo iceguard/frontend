@@ -48,9 +48,8 @@ steps:
       inputs:
           Contents: 'node_modules'
 
-    - task: CopyFiles@2
-      displayName: 'Copy Files'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifacts'
       inputs:
-          SourceFolder: $(System.SourcesDirectory)
-          Contents: '**/*'
-          TargetFolder: $(Build.ArtifactStagingDirectory)
+          SourceFolder: $(Build.ArtifactStagingDirectory)
+          artifactName: 'ice-guard-frontend'
