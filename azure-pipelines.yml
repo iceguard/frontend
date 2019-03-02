@@ -36,8 +36,9 @@ steps:
       displayName: 'Lint JavaScript'
 
     - script: |
+          yarn clean
           yarn build-public
           yarn build-funcs
           yarn build-app
           yarn copy-deps
-      displayName: 'Build Artifacts'
+      displayName: 'Build Tests'
