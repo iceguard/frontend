@@ -43,7 +43,7 @@ steps:
           yarn clean
       displayName: 'Build Tests'
 
-    - task: DeleteFiles@2
+    - task: DeleteFiles@1
       displayName: 'Delete node_modules'
       inputs:
           Contents: 'node_modules'
