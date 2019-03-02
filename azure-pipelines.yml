@@ -49,7 +49,7 @@ steps:
           sourceFolder: 'node_modules'
 
     - task: CopyFiles@2
-      displayName: 'Copy Files to: Artifact staging'
+      displayName: 'Copy Files'
       inputs:
           SourceFolder: $(System.DefaultWorkingDirectory)
           Contents: '**/*'
