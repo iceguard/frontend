@@ -42,15 +42,3 @@ steps:
           yarn copy-deps
           yarn clean
       displayName: 'Build Tests'
-
-    - task: DeleteFiles@2
-      displayName: 'Delete node_modules'
-      inputs:
-          sourceFolder: 'node_modules'
-
-    - task: CopyFiles@2
-      displayName: 'Copy Files'
-      inputs:
-          SourceFolder: $(System.DefaultWorkingDirectory)
-          Contents: '**/*'
-          TargetFolder: $(Build.ArtifactStagingDirectory)
