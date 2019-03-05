@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Main from '@layout/Main'
-import Login from '@auth/Login'
+import { Login } from '@auth/login'
 
 export default class LoginPage extends Component {
     render() {

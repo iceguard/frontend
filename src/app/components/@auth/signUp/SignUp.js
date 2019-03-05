@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import Router from 'next/router'
-import Link from 'next/link'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
-export default class Login extends Component {
+export class SignUp extends Component {
     constructor() {
         super()
 
         this.state = {
+            signUpSuccess: false,
             form: {
                 infoMessage: '',
                 email: {
@@ -24,6 +23,15 @@ export default class Login extends Component {
                 password: {
                     label: 'Password',
                     name: 'password',
+                    type: 'password',
+                    value: '',
+                    required: true,
+                    errorMessage: '',
+                    hasError: false,
+                },
+                passwordRepeat: {
+                    label: 'Repeat password',
+                    name: 'passwordRepeat',
                     type: 'password',
                     value: '',
                     required: true,
@@ -50,37 +58,54 @@ export default class Login extends Component {
         this.updateFormState(form)
     }
 
+    passwordValuesDoMatch = () => {
+        const { password, passwordRepeat } = this.state.form
+        return password.value === passwordRepeat.value
+    }
+
     handleSubmit = event => {
         event.preventDefault()
         const form = { ...this.state.form }
 
-        form.email.hasError = false
-        form.email.errorMessage = ''
-        form.password.hasError = false
-        form.password.errorMessage = ''
+        if (!this.passwordValuesDoMatch()) {
+            form.password.hasError = true
+            form.password.errorMessage = 'Passwörter stimmen nicht überein'
+            form.passwordRepeat.hasError = true
+            form.passwordRepeat.errorMessage = 'Passwörter stimmen nicht überein'
 
-        this.updateFormState(form)
+            this.updateFormState(form)
+            return
+        } else {
+            form.password.hasError = false
+            form.password.errorMessage = ''
+            form.passwordRepeat.hasError = false
+            form.passwordRepeat.errorMessage = ''
+        }
 
         firebase
             .auth()
-            .signInWithEmailAndPassword(form.email.value, form.password.value)
+            .createUserWithEmailAndPassword(form.email.value, form.password.value)
             .then(() => {
-                Router.push('/')
+                this.setState({
+                    signUpSuccess: true,
+                })
             })
             .catch(error => {
                 const errorCode = error.code
 
-                if (errorCode === 'auth/invalid-email') {
+                if (errorCode === 'auth/email-already-in-use') {
+                    form.email.hasError = true
+                    form.email.errorMessage = 'Diese E-Mail-Adresse wird bereits verwendet'
+                } else if (errorCode === 'auth/invalid-email') {
                     form.email.hasError = true
                     form.email.errorMessage = 'E-Mail Adresse ist ungültig'
-                } else if (errorCode === 'auth/user-disabled') {
-                    form.infoMessage = 'User wurde deaktiviert'
-                } else if (errorCode === 'auth/user-not-found') {
-                    form.email.hasError = true
-                    form.email.errorMessage = 'Kein gültiger User für diese E-Mail Adresse'
-                } else if (errorCode === 'auth/wrong-password') {
+                } else if (errorCode === 'auth/weak-password') {
                     form.password.hasError = true
-                    form.password.errorMessage = 'Passwort ist ungültig'
+                    form.password.errorMessage = 'Schwaches Passwort'
+                    form.passwordRepeat.hasError = true
+                    form.passwordRepeat.errorMessage = 'Schwaches Passwort'
+                } else if (errorCode === 'auth/operation-not-allowed') {
+                    form.infoMessage = 'Diese Operation ist nicht erlaubt'
                 } else {
                     form.infoMessage = errorCode.infoMessage
                 }
@@ -91,10 +116,13 @@ export default class Login extends Component {
 
     render() {
         const form = this.state.form
+        const { signUpSuccess } = this.state
 
-        return (
+        return signUpSuccess ? (
+            <p>Registration successful</p>
+        ) : (
             <>
-                <h2>Login</h2>
+                <h2>Sign Up</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormInfoBar infoMessage={form.infoMessage} />
                     <FormInput
@@ -117,11 +145,18 @@ export default class Login extends Component {
                         onChange={this.updateInputValue}
                         hasError={form.password.hasError}
                     />
-                    <FormSubmit value="Login" />
+                    <FormInput
+                        label={form.passwordRepeat.label}
+                        name={form.passwordRepeat.name}
+                        type={form.passwordRepeat.type}
+                        required={form.passwordRepeat.required}
+                        intitialValue={form.passwordRepeat.value}
+                        errorMessage={form.passwordRepeat.errorMessage}
+                        onChange={this.updateInputValue}
+                        hasError={form.passwordRepeat.hasError}
+                    />
+                    <FormSubmit value="Sign Up" />
                 </Form>
-                <Link href="/resetpassword">
-                    <a>Forgot password?</a>
-                </Link>
             </>
         )
     }

@@ -3,7 +3,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
-export default class ChangePassword extends Component {
+export class ChangePassword extends Component {
     constructor() {
         super()
 

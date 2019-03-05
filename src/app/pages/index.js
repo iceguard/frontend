@@ -5,7 +5,7 @@ export default class IndexPage extends Component {
     render() {
         return (
             <Main>
-                <h2>Welcome to Ice Guard!</h2>
+                <h2>Welcome</h2>
             </Main>
         )
     }

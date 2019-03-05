@@ -13,7 +13,7 @@ export default class Header extends PureComponent {
                 {user => {
                     return (
                         <header>
-                            <h1>Ice Guard Surveillance System</h1>
+                            <h1>IGSS</h1>
                             <ul>
                                 <li>
                                     <Link href="/">
