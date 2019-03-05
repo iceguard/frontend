@@ -23,6 +23,7 @@
         "@babel/preset-env": "^7.2.0",
         "@firebase/app-types": "^0.3.2",
         "babel-eslint": "^10.0.1",
+        "babel-jest": "^24.1.0",
         "babel-plugin-module-resolver": "^3.2.0",
         "cpx": "^1.5.0",
         "cross-env": "^5.2.0",
@@ -31,8 +32,10 @@
         "eslint-plugin-prettier": "^3.0.1",
         "eslint-plugin-react": "^7.12.4",
         "firebase-tools": "^6.3.0",
+        "jest": "^24.1.0",
         "pre-push": "^0.1.1",
         "prettier": "^1.16.1",
+        "react-test-renderer": "^16.8.3",
         "rimraf": "^2.6.2"
     },
     "scripts": {
@@ -49,7 +52,8 @@
         "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
         "install-deps": "cd \"dist/functions\" && yarn",
         "lint": "node node_modules/eslint/bin/eslint.js .",
-        "lint:fix": "node node_modules/eslint/bin/eslint.js . --fix"
+        "lint:fix": "node node_modules/eslint/bin/eslint.js . --fix",
+        "test": "jest"
     },
     "pre-push": [
         "lint"
