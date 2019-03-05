@@ -53,8 +53,5 @@
     },
     "pre-push": [
         "lint"
-    ],
-    "engines": {
-        "node": "8"
-    }
+    ]
 }
