@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import Main from '@layout/Main'
+import { Layout } from '@layout/layout'
 import { Auth } from '@auth/auth'
 
 export default class AuthPage extends Component {
     render() {
         return (
-            <Main>
+            <Layout>
                 <Auth />
-            </Main>
+            </Layout>
         )
     }
 }

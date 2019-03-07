@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import Main from '@layout/Main'
+import { Layout } from '@layout/layout'
 
 export default class IndexPage extends Component {
     render() {
-        return (
-            <Main>
-                <h2>Welcome</h2>
-            </Main>
-        )
+        return <Layout />
     }
 }

@@ -1,0 +1,27 @@
+.sideNav {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  bottom: 0;
+  overflow: scroll;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    bottom: 15px;
+    border-right: 1px solid rgba(0,0,0,0.2);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .sideNav {
+    position: relative;
+    left: 0;
+    height: 100%;
+    width: 220px;
+    overflow: scroll;
+  }
+}

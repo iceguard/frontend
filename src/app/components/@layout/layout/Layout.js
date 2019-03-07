@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import Header from '@layout/Header'
-import { setUser } from '../../store/actions'
+import { SideNav } from '@layout/sideNav'
+import { setUser } from '../../../store/actions'
 import { connect } from 'react-redux'
+import { Main } from '@layout/main'
+import { Header } from '@layout/header'
+import styles from './layout.scss'
 
 const prod = process.env.NODE_ENV == 'prod'
 
-class Main extends Component {
+class Layout extends Component {
     constructor() {
         super()
 
@@ -41,10 +44,13 @@ class Main extends Component {
 
     render() {
         return (
-            <main>
-                <Header />
-                {this.props.children}
-            </main>
+            <div className={styles.pageWrapper}>
+                <SideNav />
+                <div className={styles.mainArea}>
+                    <Header />
+                    <Main>{this.props.children}</Main>
+                </div>
+            </div>
         )
     }
 }
@@ -56,4 +62,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     null,
     mapDispatchToProps
-)(Main)
+)(Layout)
