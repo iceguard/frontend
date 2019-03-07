@@ -11,6 +11,7 @@ export default class MyDocument extends Document {
         return (
             <html>
                 <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" className="next-head" />
                     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700" rel="stylesheet" />
 
@@ -29,8 +30,10 @@ export default class MyDocument extends Document {
                             font-weight: 300;
                             font-size: 16px;
                             color: #1b1b1b;
-                            background: rgb(244,244,244);
-                            background: linear-gradient(176deg, rgba(244,244,244,1) 0%, rgba(213,248,255,1) 100%);
+                        }
+
+                        h1, h2, h3, h4, h5, h6 {
+                            font-weight: 300;
                         }
 
                         a {

@@ -45,11 +45,9 @@ class Layout extends Component {
     render() {
         return (
             <div className={styles.pageWrapper}>
+                <Header />
                 <SideNav />
-                <div className={styles.mainArea}>
-                    <Header />
-                    <Main>{this.props.children}</Main>
-                </div>
+                <Main>{this.props.children}</Main>
             </div>
         )
     }

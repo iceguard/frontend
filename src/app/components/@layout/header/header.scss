@@ -1,7 +1,6 @@
 .header {
-  position: relative;
   display: flex;
-  width: 100%;
+  position: relative;
   justify-content: space-between;
 }
 
@@ -9,55 +8,47 @@
   display: none;
   margin-left: auto;
   font-size: 14px;
-  margin: 0 12px 0;
+  margin: 0;
   padding: 0;
 
   li {
-    display: inline-block;
+    display: table;
+    height: 100%;
 
     a {
-      display: inline-block;
-      padding: 27px 15px 15px;
+      display: table-cell;
+      vertical-align: middle;
+      padding: 10px;
       text-decoration: none;
     } 
+
+    &:last-child a {
+      padding-right: 20px;
+    } 
   } 
+
 }  
 
 @media screen and (min-width: 500px) {
   .headerNav {
-    display: inline-block;
+    display: inline-flex;
   } 
 }
 
 .navTrigger {
-  display: block;
   position: fixed;
-  top: 24px;
+  top: 20px;
   right: 20px;
-  width: 28px;
+  width: 25px;
   padding: 0;
   box-sizing: border-box;
   cursor: pointer;
 
   span {
     display: block;
-    height: 3px;
+    height: 2px;
     margin-bottom: 5px;
-    background: rgb(120,120,120);
-
-    &:nth-child(2) {
-      width: 90%;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &:hover {
-    span {
-      background: rgb(100,100,100);
-    }
+    background: black;
   }
 }
 

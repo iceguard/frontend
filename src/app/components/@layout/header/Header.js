@@ -17,7 +17,7 @@ export class Header extends PureComponent {
 
                     return (
                         <header className={styles.header}>
-                            {!isLoggedIn ? <Logo /> : <div />}
+                            <Logo />
                             <div className={styles.navTrigger}>
                                 <span />
                                 <span />
@@ -26,7 +26,9 @@ export class Header extends PureComponent {
                             <ul className={styles.headerNav}>
                                 {isLoggedIn ? (
                                     <>
-                                        <li>{user.email}</li>
+                                        <li>
+                                            <a>{user.email}</a>
+                                        </li>
                                         <li>
                                             <a onClick={() => firebase.auth().signOut()}>Logout</a>
                                         </li>

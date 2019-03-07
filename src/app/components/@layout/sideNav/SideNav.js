@@ -12,11 +12,7 @@ export class SideNav extends PureComponent {
                     const isLoggedIn = user.email
 
                     if (isLoggedIn) {
-                        return (
-                            <aside className={styles.sideNav}>
-                                <Logo />
-                            </aside>
-                        )
+                        return <aside className={styles.sideNav} />
                     }
                 }}
             </WithUser>
