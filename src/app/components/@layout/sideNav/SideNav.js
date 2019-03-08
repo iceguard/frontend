@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import 'firebase/auth'
 import WithUser from '@misc/WithUser'
 import styles from './sideNav.scss'
 
-export class SideNav extends PureComponent {
+export class SideNav extends Component {
     render() {
         return (
             <WithUser>
