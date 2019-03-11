@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { Main } from '@layout/main'
 import { Header } from '@layout/header'
 import styles from './layout.scss'
-import WithAuth from '../../@misc/WithAuth'
+import WithAuth from '@misc/WithAuth'
 
 const prod = process.env.NODE_ENV == 'prod'
 

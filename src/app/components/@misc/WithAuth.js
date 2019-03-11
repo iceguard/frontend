@@ -3,10 +3,6 @@ import { connect } from 'react-redux'
 import Router from 'next/router'
 
 class WithAuth extends Component {
-    constructor() {
-        super()
-    }
-
     componentDidMount() {
         if (this.props.user && !this.props.user.uid) {
             Router.push({
