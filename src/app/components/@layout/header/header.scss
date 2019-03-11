@@ -77,3 +77,11 @@
     display: none;
   }
 }
+
+.loggedInUser {
+  padding: 5px 10px;
+  color: white;
+  border-radius: 3px;
+  background: rgba(12,148,224,1);
+  background: linear-gradient(0deg, rgba(17,161,241,1) 0%, rgba(12,148,224,1) 100%);
+} 

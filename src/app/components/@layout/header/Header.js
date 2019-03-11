@@ -65,7 +65,9 @@ export class Header extends Component {
                         {isLoggedIn ? (
                             <>
                                 <li>
-                                    <a>{user.email}</a>
+                                    <a>
+                                        <span className={styles.loggedInUser}>{user.email}</span>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="" onClick={() => firebase.auth().signOut()}>
