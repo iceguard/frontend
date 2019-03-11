@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import Main from '@layout/Main'
-import SignUp from '@auth/SignUp'
+import { Layout } from '@layout/layout'
+import { SignUp } from '@auth/signUp'
 
 export default class SignUpPage extends Component {
     render() {
         return (
-            <Main>
+            <Layout>
                 <SignUp />
-            </Main>
+            </Layout>
         )
     }
 }

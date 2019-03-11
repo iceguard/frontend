@@ -3,7 +3,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import { Form, FormInfoBar, FormInput, FormSubmit } from '@core/form'
 
-export default class ChangePassword extends Component {
+export class ChangePassword extends Component {
     constructor() {
         super()
 
@@ -116,7 +116,7 @@ export default class ChangePassword extends Component {
         const { form, changePasswordSuccess } = this.state
 
         if (changePasswordSuccess) {
-            return <p>Ihr Password wurde geändert</p>
+            return <p>Ihr Password wurde geändert.</p>
         }
 
         return (

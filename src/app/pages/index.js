@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import Main from '@layout/Main'
-import style from './index.css'
+import { Layout } from '@layout/layout'
 
 export default class IndexPage extends Component {
     render() {
-        return (
-            <Main>
-                <h2 className={style.test}>Welcome to Ice Guard!!!!</h2>
-            </Main>
-        )
+        return <Layout />
     }
 }
