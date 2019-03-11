@@ -116,7 +116,7 @@ export class ChangePassword extends Component {
         const { form, changePasswordSuccess } = this.state
 
         if (changePasswordSuccess) {
-            return <p>Ihr Password wurde geändert</p>
+            return <p>Ihr Password wurde geändert.</p>
         }
 
         return (

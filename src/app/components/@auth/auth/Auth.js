@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import WithRouter from '@misc/WithRouter'
-import ChangePassword from '@auth/changePassword'
+import { ChangePassword } from '@auth/changePassword'
 
 export class Auth extends Component {
     constructor() {
