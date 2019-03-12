@@ -43,12 +43,13 @@ steps:
       displayName: 'Build'
 
     - task: CopyFiles@2
-      displayName: 'Copy Files for Artifact Staging'
+      displayName: 'Copy files for Artifact Staging'
       inputs:
           SourceFolder: $(System.DefaultWorkingDirectory)
           Contents: |
               .firebaserc
-              .firebase.json
+              firebase.json
+              package.json
               dist/**/*
           TargetFolder: $(Build.ArtifactStagingDirectory)
 
