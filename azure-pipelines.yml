@@ -2,7 +2,7 @@ variables:
     - group: Frontend
 
 trigger:
-    - develop
+    - master
 
 pool:
     vmImage: 'Ubuntu-16.04'
@@ -36,5 +36,25 @@ steps:
       displayName: 'Lint JavaScript'
 
     - script: |
-          yarn deploy-test
-      displayName: 'Deploy to Firebase (Test) 🔥'
+          yarn build-public
+          yarn build-funcs
+          yarn build-app
+          yarn copy-deps
+      displayName: 'Build'
+
+    - task: CopyFiles@2
+      displayName: 'Copy files for Artifact Staging'
+      inputs:
+          SourceFolder: $(System.DefaultWorkingDirectory)
+          Contents: |
+              .firebaserc
+              firebase.json
+              package.json
+              dist/**/*
+          TargetFolder: $(Build.ArtifactStagingDirectory)
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Staging Artifacts'
+      inputs:
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'build'
