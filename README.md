@@ -15,20 +15,13 @@
 #### Project branches
 
 -   `master`
--   `develop`
 -   `feature/[name_of_your_feature]`
 
 #### Collaboration rules
 
-1. Switch to develop branch `git checkout develop`
-2. Create new feature branch `git checkout -b feature/[name_of_your_feature]`
-3. Push your changes
-4. Create pull request on Github to merge your feature branch into `develop`
-
-#### Continous deployment
-
--   Accepted pull requests for the `develop` branch will be deployed to https://ice-guard-test.firebaseapp.com
--   Accepted pull requests for the `master` branch will be deployed to https://ice-guard-prod.firebaseapp.com
+1. Create new feature branch `git checkout -b feature/[name_of_your_feature]`
+2. Push your changes
+3. Create pull request on Github to merge your feature branch into `master`
 
 #### Project stack
 
