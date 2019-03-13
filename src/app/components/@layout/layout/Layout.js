@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import Router from 'next/router'
 import { SideNav } from '@layout/sideNav'
 import { setUser } from '../../../store/actions'
 import { connect } from 'react-redux'
 import { Main } from '@layout/main'
 import { Header } from '@layout/header'
 import styles from './layout.scss'
-import WithAuth from '@misc/WithAuth'
 
 const prod = process.env.NODE_ENV == 'prod'
 
@@ -43,24 +43,44 @@ class Layout extends Component {
         })
     }
 
+    componentDidUpdate() {
+        const { withAuth = false, user } = this.props
+
+        if (withAuth && user && !user.uid) {
+            Router.push({
+                pathname: '/login',
+            })
+        }
+    }
+
     render() {
+        const { withAuth = false, user } = this.props
+
         return (
-            <WithAuth>
-                <div className={styles.pageWrapper}>
+            <div className={styles.pageWrapper}>
+                {withAuth && !user.uid ? (
                     <Header />
-                    <SideNav />
-                    <Main>{this.props.children}</Main>
-                </div>
-            </WithAuth>
+                ) : (
+                    <>
+                        <Header />
+                        <SideNav />
+                        <Main>{this.props.children}</Main>
+                    </>
+                )}
+            </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    user: state.user,
+})
 
 const mapDispatchToProps = dispatch => ({
     onAuthChange: user => dispatch(setUser(user)),
 })
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Layout)
