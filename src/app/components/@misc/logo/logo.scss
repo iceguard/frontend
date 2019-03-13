@@ -6,4 +6,13 @@
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+
+  a {
+    color: white; 
+
+    &:hover,
+    &:focus {
+      color: white; 
+    }
+  }
 } 

@@ -13,14 +13,14 @@ export default class MyDocument extends Document {
                 <Head>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" className="next-head" />
-                    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700" rel="stylesheet" />
+                    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
 
                     <style>{`
                         #__next { height: 100%; }
 
                         html {
                             height: 100%;
-                        }
+                        }   
 
                         body {
                             position: relative;
@@ -37,7 +37,12 @@ export default class MyDocument extends Document {
                         }
 
                         a {
-                            color: #1b1b1b;
+                            color: rgb(120, 36, 216);
+                        }
+
+                        a:hover,
+                        a:focus {
+                            color: rgb(107, 27, 198);
                         }
                     `}</style>
                 </Head>

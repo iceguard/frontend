@@ -1,6 +1,8 @@
-.FormContainer {
-  max-width: 400px;
-}  
+@media screen and (min-width: 500px) {
+  .FormContainer {
+    max-width: 400px;
+  }  
+}
 
 .formItem {
   margin-bottom: 10px;
@@ -8,7 +10,7 @@
 
 .formItemError {
   .formInput {
-    border: 1px solid black;
+    border: 1px solid rgb(224, 35, 83);
   }
 }
 
@@ -22,7 +24,7 @@
 .formInput {
   width: 100%;
   box-sizing: border-box;
-  padding: 5px 7px;
+  padding: 10px;
   border: 1px solid rgb(210,210,210);
   border-radius: 2px;
   box-shadow: none;
@@ -36,24 +38,37 @@
   box-sizing: border-box;
   position: relative;
   top: -1px;
-  padding: 7px;
+  padding: 7px 0;
   border-radius: 0 0 2px 2px;
-  color: white;
-  background: black;
+  color: rgb(224, 35, 83);
   font-size: 12px;
+  line-height: 15px;
 }
 
 .formSubmit {
   input {
+    width: 100%;
     color: white;
     border: none;
-    margin: 5px 0 10px;
-    padding: 7px 15px;
+    margin: 5px 0 15px;
+    padding: 10px 20px;
     font-weight: 300;
     border-radius: 2px;
-    background: rgb(17,161,241);  
-    background: linear-gradient(0deg, rgba(17,161,241,1) 0%, rgba(12,148,224,1) 100%);
+    background: rgb(120, 36, 216);  
     outline: none;
     cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: rgb(107, 27, 198);
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .formSubmit {
+    input {
+      width: auto;
+    }
   }
 }
