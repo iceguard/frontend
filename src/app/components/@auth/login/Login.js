@@ -65,7 +65,7 @@ export class Login extends Component {
             .auth()
             .signInWithEmailAndPassword(form.email.value, form.password.value)
             .then(() => {
-                Router.push('/')
+                Router.push('/dashboard')
             })
             .catch(error => {
                 const errorCode = error.code

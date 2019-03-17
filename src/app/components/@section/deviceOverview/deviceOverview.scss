@@ -1,0 +1,80 @@
+.deviceOverview {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
+}
+
+@media screen and (min-width: 800px) {
+  .deviceOverview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .deviceOverview {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.device {
+  display: inline-block;
+  box-sizing: content-box;
+  border-radius: 2px;
+  background: rgb(230,230,230);
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(220,220,220);
+  }
+}
+
+.alert {
+  .statusDot {
+    background: red;
+  }
+}
+
+.deviceHead {
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.status {
+  flex: 0;
+}
+
+.title {
+  flex: 1;
+  align-self: center;
+  padding-left: 10px;
+}
+
+.statusDot {
+  width: 25px;
+  height: 25px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: rgb(129, 229, 6);
+}
+
+.deviceContent {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.deviceTile {
+  flex: 1;
+  padding: 0 15px 15px;
+}
+
+.tileHeader {
+  margin: 0 0 5px 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.tileInfo {
+  font-weight: 700;
+}

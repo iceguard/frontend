@@ -34,8 +34,8 @@ export class Header extends Component {
                         <header className={styles.header}>
                             {this.renderLogo()}
                             {this.renderMobileNavToggle()}
-                            {this.renderHeadNavigation(user)}
-                            {this.renderMobileNav()}
+                            {this.renderHeadNav(user)}
+                            {this.renderMobileNav(user)}
                         </header>
                     )
                 }}
@@ -55,8 +55,8 @@ export class Header extends Component {
         )
     }
 
-    renderHeadNavigation(user) {
-        const isLoggedIn = user.email
+    renderHeadNav(user) {
+        const isLoggedIn = user.uid
 
         return (
             <WithRouter>
@@ -64,14 +64,19 @@ export class Header extends Component {
                     <ul className={styles.headerNav}>
                         {isLoggedIn ? (
                             <>
-                                <li>
-                                    <a>
-                                        <span className={styles.loggedInUser}>{user.email}</span>
-                                    </a>
+                                <li className={router.pathname == '/dashboard' ? styles.isActive : ''}>
+                                    <Link href="/dashboard">
+                                        <a>Dashboard</a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <a href="" onClick={() => firebase.auth().signOut()}>
                                         Logout
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span className={styles.loggedInUser}>{user.email}</span>
                                     </a>
                                 </li>
                             </>
@@ -95,7 +100,56 @@ export class Header extends Component {
         )
     }
 
-    renderMobileNav() {
-        return <div className={classnames(styles.mobileNavigation, { [styles.mobileNavigationActive]: this.state.mobileNavActive })} />
+    closeMobileNavigation() {
+        this.setState({
+            mobileNavActive: false,
+        })
+    }
+
+    renderMobileNav(user) {
+        const isLoggedIn = user.uid
+
+        return (
+            <WithRouter>
+                {router => (
+                    <div className={classnames(styles.mobileNavigation, { [styles.mobileNavigationActive]: this.state.mobileNavActive })}>
+                        <ul>
+                            {isLoggedIn ? (
+                                <>
+                                    <li className={router.pathname == '/dashboard' ? styles.isActive : ''}>
+                                        <Link href="/dashboard">
+                                            <a onClick={this.closeMobileNavigation}>Dashboard</a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a href="" onClick={() => firebase.auth().signOut()}>
+                                            Logout
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span className={styles.loggedInUser}>{user.email}</span>
+                                        </a>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li className={router.pathname == '/login' ? styles.isActive : ''}>
+                                        <Link href="/login">
+                                            <a onClick={this.closeMobileNavigation}>Login</a>
+                                        </Link>
+                                    </li>
+                                    <li className={router.pathname == '/signup' ? styles.isActive : ''}>
+                                        <Link href="/signup">
+                                            <a onClick={this.closeMobileNavigation}>Sign Up</a>
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
+                        </ul>
+                    </div>
+                )}
+            </WithRouter>
+        )
     }
 }

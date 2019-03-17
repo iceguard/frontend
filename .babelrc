@@ -1,14 +1,18 @@
 {
     "presets": ["next/babel"],
     "plugins": [
-        ["module-resolver", {
-          "root": ["./src/app"],
-          "alias": {
-            "@core": "./src/app/components/@core",
-            "@layout": "./src/app/components/@layout",
-            "@auth": "./src/app/components/@auth",
-            "@misc": "./src/app/components/@misc",
-          }
-        }]
-      ]
-  }
+        [
+            "module-resolver",
+            {
+                "root": ["./src/app"],
+                "alias": {
+                    "@core": "./src/app/components/@core",
+                    "@layout": "./src/app/components/@layout",
+                    "@auth": "./src/app/components/@auth",
+                    "@misc": "./src/app/components/@misc",
+                    "@section": "./src/app/components/@section"
+                }
+            }
+        ]
+    ]
+}

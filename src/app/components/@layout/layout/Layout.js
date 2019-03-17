@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import Router from 'next/router'
-import { SideNav } from '@layout/sideNav'
 import { setUser } from '../../../store/actions'
 import { connect } from 'react-redux'
 import { Main } from '@layout/main'
@@ -63,7 +62,6 @@ class Layout extends Component {
                 ) : (
                     <>
                         <Header />
-                        <SideNav />
                         <Main>{this.props.children}</Main>
                     </>
                 )}
