@@ -45,7 +45,7 @@
         "fblogin": "yarn firebase login",
         "dev": "next \"src/app\"",
         "preserve": "yarn build-public && yarn build-funcs && yarn build-app && yarn copy-deps && yarn install-deps",
-        "serve": "cross-env NODE_ENV=production yarn firebase serve --only functions,hosting",
+        "serve": "cross-env NODE_ENV=production yarn firebase serve --only functions,hosting -P test",
         "deploy-test": "yarn firebase deploy -P test --token $FIREBASE_TOKEN",
         "deploy-prod": "yarn firebase deploy -P prod --token $FIREBASE_TOKEN",
         "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
