@@ -1,11 +1,12 @@
 {
     "presets": [
-        ["next/babel"],
         [
-            "@babel/preset-env",
+            "next/babel",
             {
-                "targets": {
-                    "node": "current"
+                "preset-env": {
+                    "targets": {
+                        "node": "current"
+                    }
                 }
             }
         ]
