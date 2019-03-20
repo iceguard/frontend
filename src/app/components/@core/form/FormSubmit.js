@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './form.scss'
+import styles from './form.css'
 
 export default class FormInput extends Component {
     render() {

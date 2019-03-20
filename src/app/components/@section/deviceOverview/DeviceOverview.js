@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import styles from './deviceOverview.scss'
+import styles from './deviceOverview.css'
 import deviceData from './deviceData'
 
 export class DeviceOverview extends Component {

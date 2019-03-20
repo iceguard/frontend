@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import styles from './logo.scss'
+import styles from './logo.css'
 
 export class Logo extends Component {
     render() {
