@@ -12,7 +12,3 @@ export const nextApp = functions.https.onRequest((request, response) => {
 
     return app.prepare().then(() => handle(request, response))
 })
-
-export const get = functions.https.onRequest(() => {
-    return 'get data from mongo db ...'
-})
