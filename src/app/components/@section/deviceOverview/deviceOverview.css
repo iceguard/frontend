@@ -37,6 +37,7 @@
 
 .deviceHead {
   display: flex;
+  align-items: center;
   padding: 15px;
   box-sizing: border-box;
 }
@@ -59,6 +60,12 @@
   background: rgb(129, 229, 6);
 }
 
+.showDetailLink {
+  svg {
+    fill: rgb(100,100,100);
+  }
+}
+
 .deviceContent {
   display: flex;
   box-sizing: border-box;
@@ -77,4 +84,9 @@
 
 .tileInfo {
   font-weight: 700;
+}
+
+.deviceFoot {
+  display: flex;
+  box-sizing: border-box;
 }
