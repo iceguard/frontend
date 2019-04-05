@@ -23,20 +23,20 @@ export class DeviceDetailView extends Component {
                 return response.json()
             })
             .then(data => {
-                const temperatureData = data.map((d) => d.temperature)
-                const temperatureLabels = data.map((d) => (d.timestamp) ? d.timestamp : '')
+                const temperatureData = data.map(d => d.temperature)
+                const temperatureLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
-                const humidityData = data.map((d) => d.humidity)
-                const humidityLabels = data.map((d) => (d.timestamp) ? d.timestamp : '')
+                const humidityData = data.map(d => d.humidity)
+                const humidityLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
                 this.chartTemperature.data.labels = temperatureLabels
                 this.chartTemperature.data.datasets.push({
-                    data: temperatureData
+                    data: temperatureData,
                 })
 
                 this.chartHumidity.data.labels = humidityLabels
                 this.chartHumidity.data.datasets.push({
-                    data: humidityData
+                    data: humidityData,
                 })
 
                 this.chartTemperature.update()
@@ -53,14 +53,16 @@ export class DeviceDetailView extends Component {
             },
             options: {
                 legend: {
-                    display: false
+                    display: false,
                 },
                 scales: {
-                    xAxes: [{
-                        ticks: {
-                            display: false
-                        }
-                    }]
+                    xAxes: [
+                        {
+                            ticks: {
+                                display: false,
+                            },
+                        },
+                    ],
                 },
             },
         })
@@ -73,14 +75,16 @@ export class DeviceDetailView extends Component {
             },
             options: {
                 legend: {
-                    display: false
+                    display: false,
                 },
                 scales: {
-                    xAxes: [{
-                        ticks: {
-                            display: false
-                        }
-                    }]
+                    xAxes: [
+                        {
+                            ticks: {
+                                display: false,
+                            },
+                        },
+                    ],
                 },
             },
         })
