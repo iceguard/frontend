@@ -1,24 +1,6 @@
 {
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
-    "files.autoSave": "off",
-    "tslint.autoFixOnSave": true,
-    "prettier.stylelintIntegration": true,
-    "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#0554ff4f",
-        "titleBar.inactiveBackground": "#0554ff4f",
-        "statusBar.background": "#0554ff4f"
-    },
-    "azureFunctions.projectRuntime": "~2",
-    "azureFunctions.projectLanguage": "JavaScript",
-    "azureFunctions.templateFilter": "Verified",
-    "azureFunctions.deploySubpath": ".",
-    "azureFunctions.preDeployTask": "func: extensions install",
-    "files.exclude": {
-        "obj": true,
-        "bin": true
-    },
-    "debug.internalConsoleOptions": "neverOpen",
     "files.associations": {
         "*.css": "postcss"
     }

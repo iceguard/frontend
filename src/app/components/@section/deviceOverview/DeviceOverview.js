@@ -8,6 +8,8 @@ export class DeviceOverview extends Component {
     constructor() {
         super()
 
+        this.updateIntervalFn = null
+
         this.state = {
             deviceData: [],
         }
@@ -28,9 +30,13 @@ export class DeviceOverview extends Component {
     componentDidMount() {
         this.fetchData()
 
-        setInterval(() => {
+        this.updateIntervalFn = setInterval(() => {
             this.fetchData()
         }, 2000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.updateIntervalFn)
     }
 
     render() {
@@ -53,7 +59,7 @@ const Device = (device, index) => {
                 </div>
                 <div className={styles.title}>{device.deviceId}</div>
                 <div className={styles.showDetailLink}>
-                    <Link href="/device">
+                    <Link href={{ pathname: '/device', query: { id: device.deviceId } }}>
                         <a>
                             <Icon type="settings" size="25" />
                         </a>

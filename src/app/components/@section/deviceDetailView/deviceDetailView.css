@@ -1,0 +1,25 @@
+.deviceDetailView {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 20px;
+}
+
+.chartContainer {
+  position: relative;
+}
+
+.title {
+  margin-bottom: 0;
+} 
+
+@media screen and (min-width: 800px) {
+  .deviceDetailView {
+    grid-template-columns: 50% 50%;
+  }
+
+  .chartContainer {
+    padding: 20px 40px 20px 0;
+  }
+}

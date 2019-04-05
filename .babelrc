@@ -15,7 +15,9 @@
         [
             "module-resolver",
             {
-                "root": ["./src/app"],
+                "root": [
+                    "./src/app"
+                ],
                 "alias": {
                     "@core": "./src/app/components/@core",
                     "@layout": "./src/app/components/@layout",
