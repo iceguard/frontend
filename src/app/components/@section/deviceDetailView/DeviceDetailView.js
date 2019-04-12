@@ -39,16 +39,16 @@ class DeviceDetailView extends Component {
                 const humidityData = data.map(d => parseFloat(d.humidity).toFixed(2))
                 const humidityLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
-                this.chartTemperature.data.labels = temperatureLabels
+                this.chartTemperature.data.labels = temperatureLabels.reverse()
                 this.chartTemperature.data.datasets = []
                 this.chartTemperature.data.datasets.push({
-                    data: temperatureData,
+                    data: temperatureData.reverse(),
                 })
 
-                this.chartHumidity.data.labels = humidityLabels
+                this.chartHumidity.data.labels = humidityLabels.reverse()
                 this.chartHumidity.data.datasets = []
                 this.chartHumidity.data.datasets.push({
-                    data: humidityData,
+                    data: humidityData.reverse(),
                 })
 
                 this.chartTemperature.update()
