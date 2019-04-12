@@ -25,13 +25,16 @@
     cursor: pointer;
 
     &:hover {
-        background: rgb(220, 220, 220);
+        transform: scale(1.012);
     }
 }
 
 .alert {
+    background: rgba(255, 142, 158, 0.3);
+
     .statusDot {
-        background: red;
+        animation: alertAnimation 2s infinite;
+        background: #ff1c3a;
     }
 }
 
@@ -53,16 +56,22 @@
 }
 
 .statusDot {
-    width: 25px;
-    height: 25px;
+    position: relative;
+    width: 30px;
+    height: 30px;
     box-sizing: border-box;
     border-radius: 50%;
     background: rgb(129, 229, 6);
+    transform: scale(0.9);
+    transition: all 0.1s ease-in-out;
+    animation: normalAnimation 2s infinite;
+    background: #8bef00;
 }
 
 .showDetailLink {
     svg {
         fill: rgb(100, 100, 100);
+        transition: all 0.1s ease-in-out;
     }
 
     &:hover {
@@ -95,4 +104,32 @@
 .deviceFoot {
     display: flex;
     box-sizing: border-box;
+}
+
+@keyframes normalAnimation {
+    0% {
+        background: #8bef00;
+    }
+
+    50% {
+        background: #60ce00;
+    }
+
+    100% {
+        background: #8bef00;
+    }
+}
+
+@keyframes alertAnimation {
+    0% {
+        background: #ff1c3a;
+    }
+
+    50% {
+        background: #d6000a;
+    }
+
+    100% {
+        background: #ff1c3a;
+    }
 }

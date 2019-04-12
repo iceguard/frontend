@@ -52,7 +52,7 @@ export class DeviceOverview extends Component {
 
 const Device = (device, index) => {
     return (
-        <div className={classnames(styles.device, { [styles.alert]: device.alert })} key={`${device.deviceId}-${index}`}>
+        <div className={classnames(styles.device, { [styles.alert]: device.temperature < 25 })} key={`${device.deviceId}-${index}`}>
             <div className={styles.deviceHead}>
                 <div className={styles.status}>
                     <div className={styles.statusDot} />
