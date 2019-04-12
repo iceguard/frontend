@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import styles from './deviceDetailView.css'
 import { Chart } from 'chart.js'
 import Link from 'next/link'
-import WithRouter from '@misc/WithRouter'
+import { withRouter } from 'next/router'
+import { Icon } from '@misc/icon'
 
-export class DeviceDetailView extends Component {
+class DeviceDetailView extends Component {
     constructor() {
         super()
+
+        this.state = {
+            deviceId: '',
+            isFetchingData: false,
+        }
 
         this.chartTemperature = null
         this.chartHumidity = null
@@ -17,30 +23,40 @@ export class DeviceDetailView extends Component {
         this.updateIntervalFn = null
     }
 
-    fetchData() {
-        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/measurements?deviceId=simulator')
+    fetchData(deviceId) {
+        this.setState({
+            isFetchingData: true,
+        })
+
+        fetch(`https://iceguard-cosmos-functions.azurewebsites.net/api/measurements?deviceId=${deviceId}`)
             .then(response => {
                 return response.json()
             })
             .then(data => {
-                const temperatureData = data.map(d => d.temperature)
+                const temperatureData = data.map(d => parseFloat(d.temperature).toFixed(2))
                 const temperatureLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
-                const humidityData = data.map(d => d.humidity)
+                const humidityData = data.map(d => parseFloat(d.humidity).toFixed(2))
                 const humidityLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
                 this.chartTemperature.data.labels = temperatureLabels
+                this.chartTemperature.data.datasets = []
                 this.chartTemperature.data.datasets.push({
                     data: temperatureData,
                 })
 
                 this.chartHumidity.data.labels = humidityLabels
+                this.chartHumidity.data.datasets = []
                 this.chartHumidity.data.datasets.push({
                     data: humidityData,
                 })
 
                 this.chartTemperature.update()
                 this.chartHumidity.update()
+
+                this.setState({
+                    isFetchingData: false,
+                })
             })
     }
 
@@ -64,6 +80,9 @@ export class DeviceDetailView extends Component {
                         },
                     ],
                 },
+                animation: {
+                    duration: 0,
+                },
             },
         })
 
@@ -86,14 +105,17 @@ export class DeviceDetailView extends Component {
                         },
                     ],
                 },
+                animation: {
+                    duration: 0,
+                },
             },
         })
 
-        this.fetchData()
+        this.fetchData(this.props.router.query.id)
 
-        // this.updateIntervalFn = setInterval(() => {
-        //     this.fetchData()
-        // }, 2000)
+        this.updateIntervalFn = setInterval(() => {
+            this.fetchData(this.props.router.query.id)
+        }, 10000)
     }
 
     componentWillUnmount() {
@@ -101,30 +123,30 @@ export class DeviceDetailView extends Component {
     }
 
     render() {
+        const deviceId = this.props.router.query.id
+
         return (
-            <WithRouter>
-                {router => {
-                    const deviceId = router.query.id
-                    return (
-                        <>
-                            <Link href="/dashboard">
-                                <a>Back</a>
-                            </Link>
-                            <h1 className={styles.title}>{deviceId}</h1>
-                            <section className={styles.deviceDetailView}>
-                                <div className={styles.chartContainer}>
-                                    <h3>Temperature</h3>
-                                    <canvas className={styles.deviceStatistic} ref={this.chartTemperatureEl} />
-                                </div>
-                                <div className={styles.chartContainer}>
-                                    <h3>Humidity</h3>
-                                    <canvas className={styles.deviceStatistic} ref={this.chartHumidityEl} />
-                                </div>
-                            </section>
-                        </>
-                    )
-                }}
-            </WithRouter>
+            <>
+                <Link href="/dashboard">
+                    <a className={styles.backLink}>
+                        <Icon type="back" size="15" />
+                        Back
+                    </a>
+                </Link>
+                <h1 className={styles.title}>{deviceId}</h1>
+                <section className={styles.deviceDetailView}>
+                    <div className={styles.chartContainer}>
+                        <h3>Humidity (%)</h3>
+                        <canvas className={styles.deviceStatistic} ref={this.chartHumidityEl} />
+                    </div>
+                    <div className={styles.chartContainer}>
+                        <h3>Temperature (°C)</h3>
+                        <canvas className={styles.deviceStatistic} ref={this.chartTemperatureEl} />
+                    </div>
+                </section>
+            </>
         )
     }
 }
+
+export default withRouter(DeviceDetailView)

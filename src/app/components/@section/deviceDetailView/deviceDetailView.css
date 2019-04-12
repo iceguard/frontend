@@ -1,25 +1,40 @@
 .deviceDetailView {
-  position: relative;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 20px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 20px;
 }
 
 .chartContainer {
-  position: relative;
+    position: relative;
+    margin-right: 10px;
 }
 
 .title {
-  margin-bottom: 0;
-} 
+    margin: 25px 0 15px;
+}
+
+.backLink {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+
+    svg {
+        position: relative;
+        top: 2px;
+        left: -2px;
+
+        fill: rgb(120, 36, 216);
+    }
+}
 
 @media screen and (min-width: 800px) {
-  .deviceDetailView {
-    grid-template-columns: 50% 50%;
-  }
+    .deviceDetailView {
+        grid-template-columns: 50% 50%;
+    }
 
-  .chartContainer {
-    padding: 20px 40px 20px 0;
-  }
+    .chartContainer {
+        margin-right: 20px;
+        padding-right: 20px;
+    }
 }

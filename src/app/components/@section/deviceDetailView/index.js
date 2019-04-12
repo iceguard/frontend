@@ -1,3 +1,3 @@
-import { DeviceDetailView } from './DeviceDetailView'
+import DeviceDetailView from './DeviceDetailView'
 
 export { DeviceDetailView }
