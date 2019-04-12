@@ -25,7 +25,7 @@
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.012);
+        background: rgb(200, 200, 200);
     }
 }
 
@@ -35,6 +35,10 @@
     .statusDot {
         animation: alertAnimation 2s infinite;
         background: #ff1c3a;
+    }
+
+    &:hover {
+        background: rgba(255, 142, 158, 0.5);
     }
 }
 
