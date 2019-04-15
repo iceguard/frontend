@@ -33,10 +33,10 @@ class DeviceDetailView extends Component {
                 return response.json()
             })
             .then(data => {
-                const temperatureData = data.map(d => parseFloat(d.temperature).toFixed(2))
+                const temperatureData = data.map(d => parseFloat(d.measurementValues.temperature).toFixed(2))
                 const temperatureLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
-                const humidityData = data.map(d => parseFloat(d.humidity).toFixed(2))
+                const humidityData = data.map(d => parseFloat(d.measurementValues.humidity).toFixed(2))
                 const humidityLabels = data.map(d => (d.timestamp ? d.timestamp : ''))
 
                 this.chartTemperature.data.labels = temperatureLabels.reverse()
@@ -115,7 +115,7 @@ class DeviceDetailView extends Component {
 
         this.updateIntervalFn = setInterval(() => {
             this.fetchData(this.props.router.query.id)
-        }, 10000)
+        }, 4000)
     }
 
     componentWillUnmount() {

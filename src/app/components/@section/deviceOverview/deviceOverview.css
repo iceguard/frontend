@@ -4,15 +4,9 @@
     grid-gap: 10px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
     .deviceOverview {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (min-width: 1300px) {
-    .deviceOverview {
-        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -57,6 +51,7 @@
     flex: 1;
     align-self: center;
     padding-left: 10px;
+    font-size: 20px;
 }
 
 .statusDot {
@@ -86,7 +81,8 @@
 }
 
 .deviceContent {
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     box-sizing: border-box;
 }
 

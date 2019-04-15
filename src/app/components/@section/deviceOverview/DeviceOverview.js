@@ -16,11 +16,12 @@ export class DeviceOverview extends Component {
     }
 
     fetchData() {
-        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/latest?deviceIds=simulator,simulator2')
+        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/latest?deviceIds=ice-guard-1')
             .then(response => {
                 return response.json()
             })
             .then(data => {
+                console.log(data)
                 this.setState({
                     deviceData: data,
                 })
@@ -52,7 +53,7 @@ export class DeviceOverview extends Component {
 
 const Device = (device, index) => {
     return (
-        <div className={classnames(styles.device, { [styles.alert]: device.temperature < 25 })} key={`${device.deviceId}-${index}`}>
+        <div className={classnames(styles.device, { [styles.alert]: device.measurementValues.temperature < 25 })} key={`${device.deviceId}-${index}`}>
             <div className={styles.deviceHead}>
                 <div className={styles.status}>
                     <div className={styles.statusDot} />
@@ -67,14 +68,16 @@ const Device = (device, index) => {
                 </div>
             </div>
             <div className={styles.deviceContent}>
-                <div className={styles.deviceTile}>
-                    <h5 className={styles.tileHeader}>Humidity</h5>
-                    <div className={styles.tileInfo}>{parseFloat(device.humidity).toFixed(2)} %</div>
-                </div>
-                <div className={styles.deviceTile}>
-                    <h5 className={styles.tileHeader}>Temperature</h5>
-                    <div className={styles.tileInfo}>{parseFloat(device.temperature).toFixed(2)} °C</div>
-                </div>
+                {Object.keys(device.measurementValues).map(m => {
+                    return (
+                        <div className={styles.deviceTile}>
+                            <h5 className={styles.tileHeader}>{m.charAt(0).toUpperCase() + m.slice(1)}</h5>
+                            <div className={styles.tileInfo}>
+                                {parseFloat(device.measurementValues[m]).toFixed(2)} {getUnit(m)}
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
             <div className={styles.deviceFoot}>
                 <div className={styles.deviceTile}>
@@ -84,4 +87,15 @@ const Device = (device, index) => {
             </div>
         </div>
     )
+}
+
+const getUnit = unit => {
+    switch (unit) {
+        case 'temperature':
+            return '°C'
+        case 'humidity':
+            return '%'
+        default:
+            return 'm/s'
+    }
 }
