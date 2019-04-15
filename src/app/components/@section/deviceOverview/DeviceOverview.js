@@ -21,7 +21,6 @@ export class DeviceOverview extends Component {
                 return response.json()
             })
             .then(data => {
-                console.log(data)
                 this.setState({
                     deviceData: data,
                 })
@@ -68,9 +67,9 @@ const Device = (device, index) => {
                 </div>
             </div>
             <div className={styles.deviceContent}>
-                {Object.keys(device.measurementValues).map(m => {
+                {Object.keys(device.measurementValues).map((m, index) => {
                     return (
-                        <div className={styles.deviceTile}>
+                        <div className={styles.deviceTile} key={index}>
                             <h5 className={styles.tileHeader}>{m.charAt(0).toUpperCase() + m.slice(1)}</h5>
                             <div className={styles.tileInfo}>
                                 {parseFloat(device.measurementValues[m]).toFixed(2)} {getUnit(m)}
