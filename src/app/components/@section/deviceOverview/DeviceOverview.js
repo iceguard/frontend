@@ -16,7 +16,7 @@ export class DeviceOverview extends Component {
     }
 
     fetchData() {
-        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/latest?deviceIds=ice-guard-1')
+        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/latest?deviceIds=ice-guard-1,ice-guard-2')
             .then(response => {
                 return response.json()
             })
