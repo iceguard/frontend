@@ -1,10 +1,13 @@
 .mainContainer {
-  flex: 1;
-  height: 100%;
-  overflow: scroll;
-  padding: 15px;
+    flex: 1;
+    height: 100%;
+    overflow: scroll;
 
-  > h2 {
-    margin-top: 0;
-  }
+    &.withPadding {
+        padding: 15px;
+    }
+
+    > h2 {
+        margin-top: 0;
+    }
 }

@@ -1,18 +1,27 @@
 .logo {
-  display: inline-block;
-  margin: 0;
-  padding: 15px;
-  font-size: 25px;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    padding: 15px;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
 
-  a {
-    color: white; 
+    a {
+        vertical-align: middle;
+        color: white;
 
-    &:hover,
-    &:focus {
-      color: white; 
+        &:hover,
+        &:focus {
+            color: white;
+        }
     }
-  }
-} 
+
+    svg {
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+        fill: white;
+        margin-right: 5px;
+    }
+}
