@@ -36,7 +36,7 @@ steps:
       displayName: 'Lint JavaScript'
 
     - script: |
-          yarn build-public
+          yarn build-static
           yarn build-funcs
           yarn build-app
           yarn copy-deps
