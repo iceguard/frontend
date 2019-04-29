@@ -51,6 +51,7 @@
         "deploy-test": "yarn firebase deploy -P test --token $FIREBASE_TOKEN",
         "deploy-prod": "yarn firebase deploy -P prod --token $FIREBASE_TOKEN",
         "clean": "rimraf \"dist/functions\"",
+        "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
         "build-static": "cpx \"src/app/static/**/*.*\" \"dist/functions/static\" -C",
         "build-funcs": "babel \"src/functions\" --out-dir \"dist/functions\"",
         "build-app": "cross-env NODE_ENV=production next build \"src/app\"",
