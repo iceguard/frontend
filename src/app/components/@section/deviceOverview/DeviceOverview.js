@@ -16,7 +16,7 @@ export class DeviceOverview extends Component {
     }
 
     fetchData() {
-        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/latest?deviceIds=ice-guard-1,ice-guard-2')
+        fetch('https://iceguard-cosmos-functions.azurewebsites.net/api/latest?deviceIds=ice-guard-1,ice-guard-2,simulator-1')
             .then(response => {
                 return response.json()
             })
@@ -94,7 +94,20 @@ const getUnit = unit => {
             return '°C'
         case 'humidity':
             return '%'
+        case 'acceleratorX':
+        case 'acceleratorY':
+        case 'acceleratorZ':
+            return (
+                <span>
+                    m/s
+                    <sup>2</sup>
+                </span>
+            )
+        case 'gyroscopeX':
+        case 'gyroscopeY':
+        case 'gyroscopeZ':
+            return '°/s'
         default:
-            return 'm/s'
+            return ''
     }
 }
