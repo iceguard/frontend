@@ -5,7 +5,7 @@ import { HomeView } from '@section/homeView'
 export default class IndexPage extends Component {
     render() {
         return (
-            <Layout>
+            <Layout hasPadding={false}>
                 <HomeView />
             </Layout>
         )

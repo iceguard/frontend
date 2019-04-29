@@ -53,7 +53,7 @@ class Layout extends Component {
     }
 
     render() {
-        const { withAuth = false, user, hasPadding = false } = this.props
+        const { withAuth = false, user, hasPadding = true } = this.props
 
         return (
             <div className={styles.pageWrapper}>
@@ -62,7 +62,7 @@ class Layout extends Component {
                 ) : (
                     <>
                         <Header />
-                        <Main noPadding={hasPadding}>{this.props.children}</Main>
+                        <Main hasPadding={hasPadding}>{this.props.children}</Main>
                     </>
                 )}
             </div>

@@ -3,11 +3,11 @@
     height: 100%;
     overflow: scroll;
 
-    &.withPadding {
-        padding: 15px;
-    }
-
     > h2 {
         margin-top: 0;
     }
+}
+
+.withPadding {
+    padding: 15px;
 }
