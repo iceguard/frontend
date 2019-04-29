@@ -99,7 +99,7 @@ const getUnit = unit => {
         case 'acceleratorZ':
             return (
                 <span>
-                    m/s
+                    cm/s
                     <sup>2</sup>
                 </span>
             )
