@@ -1,6 +1,6 @@
-## Ice Guard Frontend ❄️
+## Ice Guard Frontend
 
--   Production: https://ice-guard-prod.firebaseapp.com
+-   Production: https://ice-guard-prod.firebaseapp.com, https://app.iceguard.cloud/
 -   Test: https://ice-guard-test.firebaseapp.com
 
 #### Local project setup
