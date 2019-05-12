@@ -54,6 +54,11 @@
     font-size: 20px;
 }
 
+.lastUpdate {
+    padding-right: 30px;
+    font-size: 13px;
+}
+
 .statusDot {
     position: relative;
     width: 30px;
@@ -97,6 +102,13 @@
     padding: 0 15px 15px;
 }
 
+.deviceTileAlert {
+    .tileHeader {
+        color: #d6000a;
+        font-weight: 700;
+    }
+}
+
 .tileHeader {
     margin: 0 0 5px 0;
     padding: 0;
@@ -104,12 +116,38 @@
 }
 
 .tileInfo {
+    position: relative;
+    display: flex;
     font-weight: 700;
+}
+
+.tileInfoIcon {
+    display: inline-block;
+    position: absolute;
+    top: -2px;
+    left: 68px;
+}
+
+.tileInfoIconNormal {
+    position: relative;
+    top: -2px;
+    left: 2px;
+
+    svg {
+        fill: grey;
+    }
 }
 
 .deviceFoot {
     display: flex;
     box-sizing: border-box;
+}
+
+.deviceFoot {
+    .deviceTile {
+        font-size: 13px;
+        text-align: right;
+    }
 }
 
 @keyframes normalAnimation {
@@ -138,4 +176,25 @@
     100% {
         background: #ff1c3a;
     }
+}
+
+.tempStatus {
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+
+    svg {
+        fill: grey;
+    }
+}
+
+.temp-status-normal {
+    transform: rotate(0deg);
+}
+
+.temp-status-up {
+    transform: rotate(-45deg);
+}
+
+.temp-status-down {
+    transform: rotate(45deg);
 }

@@ -21,6 +21,19 @@ export class DeviceOverview extends Component {
                 return response.json()
             })
             .then(data => {
+                if (this.state.deviceData.length > 0) {
+                    data.forEach((newDevice, index) => {
+                        const currentDevice = this.state.deviceData[index]
+                        if (newDevice.measurementValues.temperature < currentDevice.measurementValues.temperature - 0.2) {
+                            data[index].temperatureTrend = 'down'
+                        } else if (newDevice.measurementValues.temperature > currentDevice.measurementValues.temperature + 0.2) {
+                            data[index].temperatureTrend = 'up'
+                        } else {
+                            data[index].temperatureTrend = 'normal'
+                        }
+                    })
+                }
+
                 this.setState({
                     deviceData: data,
                 })
@@ -58,6 +71,7 @@ const Device = (device, index) => {
                     <div className={styles.statusDot} />
                 </div>
                 <div className={styles.title}>{device.deviceId}</div>
+                <div className={styles.lastUpdate}>{device.timestamp}</div>
                 <div className={styles.showDetailLink}>
                     <Link href={{ pathname: '/device', query: { id: device.deviceId } }}>
                         <a>
@@ -68,22 +82,33 @@ const Device = (device, index) => {
             </div>
             <div className={styles.deviceContent}>
                 {Object.keys(device.measurementValues).map((m, index) => {
+                    const temperatureError = m === 'temperature' && device.measurementValues[m] < 25
+
                     return (
-                        <div className={styles.deviceTile} key={index}>
+                        <div className={classnames(styles.deviceTile, { [styles.deviceTileAlert]: temperatureError })} key={index}>
                             <h5 className={styles.tileHeader}>{m.charAt(0).toUpperCase() + m.slice(1)}</h5>
                             <div className={styles.tileInfo}>
-                                {parseFloat(device.measurementValues[m]).toFixed(2)} {getUnit(m)}
+                                {parseFloat(device.measurementValues[m]).toFixed(m === 'steps' ? 0 : 2)} {getUnit(m)}
+                                {m === 'temperature' && (
+                                    <span className={classnames(styles.tileInfoIcon)}>
+                                        <span className={classnames(styles[`temp-status-${device.temperatureTrend}`], styles.tempStatus)}>
+                                            <Icon type="trend" size="20" />
+                                        </span>
+                                    </span>
+                                )}
+                                {m === 'steps' && (
+                                    <span className={classnames(styles.tileInfoIconNormal)}>
+                                        <Icon type="walk" size="20" />
+                                    </span>
+                                )}
                             </div>
                         </div>
                     )
                 })}
             </div>
-            <div className={styles.deviceFoot}>
-                <div className={styles.deviceTile}>
-                    <h5 className={styles.tileHeader}>Last Update</h5>
-                    <div className={styles.tileInfo}>{device.timestamp}</div>
-                </div>
-            </div>
+            {/* <div className={styles.deviceFoot}>
+                <div className={styles.deviceTile}>{device.timestamp}</div>
+            </div> */}
         </div>
     )
 }
